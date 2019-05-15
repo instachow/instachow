@@ -19,3 +19,8 @@ body {
     height:60px;
     background:lightblue;
 }
+
+#map {
+	width: 100%;
+	height: 100%;
+}
