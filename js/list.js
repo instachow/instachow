@@ -10,7 +10,7 @@ function buildEventList() {
             event.classList.add('event-container');
 
             var start = document.createElement('p');
-            start.classList.add('event-title');
+            start.classList.add('event-title-list');
             start.innerHTML = listOfEvents[i].title;
             event.appendChild(start);
 
