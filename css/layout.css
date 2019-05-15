@@ -5,7 +5,8 @@ body {
 .header-container {
     width: 100%;
     height: 60px;
-    background-color: lightpink;
+    background-color: white;
+    color:black;
     box-sizing: border-box;
 }
 
@@ -18,12 +19,12 @@ body {
 
 .bottom-nav {
     height: 60px;
-    background: lightblue;
+    background: white;
     box-sizing: border-box;
 }
 
 #event-popup {
-    height: 260px;
+    height: auto;
     width: 100%;
     background: white;
     position: fixed;

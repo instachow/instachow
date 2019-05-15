@@ -33,7 +33,8 @@ for (var eventID in eventManifest.Events) {
             <h4>" + room + "</h4>\
             <h4> Time: " + startTime + " - " + endTime + "</h4> \
             <h4>" + food + "</h4> \
-            <p>" + description + "</p>";
+            <p>" + description + "</p> \
+            <i class='material-icons float-right'>directions</i>";
     document.body.append(eventPopup);
   });
 
