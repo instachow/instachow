@@ -1,0 +1,14 @@
+var eventManifest = {
+    "Events": {
+        "0": {
+            "title": "MENA Banquet Leftovers",
+            "lat": 42.051588,
+            "lng": -87.674791,
+            "startTime": "",
+            "endTime": "",
+            "foodCategories": ["salad", "pizza", "middle-eastern"],
+            "description": "Kresge Room 2-235 \n Falafel, hummus, and more!",
+            "comments": []
+        }
+    }
+}
