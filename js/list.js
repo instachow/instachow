@@ -10,36 +10,39 @@ function buildEventList() {
             event.classList.add('event-container');
 
             var start = document.createElement('p');
+            start.classList.add('event-title');
+            start.innerHTML = listOfEvents[i].title;
+            event.appendChild(start);
+
+            var start = document.createElement('p');
             start.classList.add('event-start');
-            var st = i.startTime;
-            console.log(i);
+            var st = listOfEvents[i].startTime;
+            console.log(listOfEvents[i]);
 
             start.innerHTML = formatDate(st);
             event.appendChild(start);
             console.log(start, "hi");
             var end = document.createElement('p');
             end.classList.add('event-end');
-            et = i.endTime;
+            et = listOfEvents[i].endTime;
             end.innerHTML = formatDate(et);
             event.appendChild(end);
 
             var categories = document.createElement('p');
             categories.classList.add('event-categories');
-            var cat = i.categories;
-            var string;
-            for (var j = 0; j < cat.length; i++) {
-                if (j != cat.length - 1) {
-                    string += cat[j] + ", ";
-                } else {
-                    string += cat[j];
-                }
+            var cat = listOfEvents[i].foodCategories;
+            var string = "";
+            console.log(cat);
+            for (var j in cat) {
+                console.log(cat[j]);
+                string += cat[j] + ", ";
             }
             categories.innerHTML = string;
             event.appendChild(categories);
 
             var description = document.createElement('p');
             description.classList.add('event-description');
-            description.innerHTML = i.description;
+            description.innerHTML = listOfEvents[i].description;
             event.appendChild(description);
             table.appendChild(event);
         }
