@@ -7,7 +7,7 @@ var eventManifest = {
             "room": "Kresge 2-235",
             "startTime": "1100",
             "endTime": "1600",
-            "foodCategories": ["salad", "pizza", "middle-eastern"],
+            "foodCategories": [" Salad", " Pizza", " Middle-eastern"],
             "description": "Falafel, hummus, and more!",
             "comments": []
         },
@@ -18,18 +18,18 @@ var eventManifest = {
             "room": "Mudd 3130",
             "startTime": "1800",
             "endTime": "2030",
-            "foodCategories": ["pizza", "asian"],
+            "foodCategories": [" Pizza", " Asian"],
             "description": "Come celebrate computer science!",
             "comments": []
         },
         "2": {
-            "title": "Sig Chi? Sig FRY",
+            "title": "Sigma Fry",
             "lat": 42.059031,
             "lng": -87.676087,
             "room": "Sigma Chi lawn",
             "startTime": "1100",
             "endTime": "1300",
-            "foodCategories": ["fast food", "burgers"],
+            "foodCategories": [" Fast food", " Burgers"],
             "description": "Come for a sizzle!",
             "comments": []
         }

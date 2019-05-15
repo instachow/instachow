@@ -20,7 +20,7 @@ for (var eventID in eventManifest.Events) {
     var startTime = event.startTime;
     var endTime = event.endTime;
     var description = event.description;
-    var description = event.description;
+    var food = event.foodCategories;
     var room = event.room;
 
     closeEventPopup();
@@ -32,7 +32,7 @@ for (var eventID in eventManifest.Events) {
             <h3>" + title + "</h3> \
             <h4>" + room + "</h4>\
             <h4> Time: " + startTime + " - " + endTime + "</h4> \
-            <h4>Salad, Pizza, Middle-Eastern </h4> \
+            <h4>" + food + "</h4> \
             <p>" + description + "</p>";
     document.body.append(eventPopup);
   });
