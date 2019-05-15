@@ -12,7 +12,7 @@ function buildEventList() {
             var eventData = listOfEvents[i];
 
             var title = document.createElement('h3');
-            title.classList.add('event-title');
+            title.classList.add('event-title-list');
             title.innerHTML = eventData.title;
             event.appendChild(title);
 
