@@ -1,7 +1,7 @@
-var listOfEvents = eventManifest.Events;
+var listOfEvents = EventList.Events;
 
 function buildEventList() {
-    var table = document.getElementById("event-list");
+    var table = document.getElementById("album-list");
     console.log(table);
     if (table != null) {
         console.log(listOfEvents);
@@ -10,7 +10,7 @@ function buildEventList() {
             event.classList.add('event-container');
 
             var start = document.createElement('p');
-            start.classList.add('event-title');
+            start.classList.add('event-title-list');
             start.innerHTML = listOfEvents[i].title;
             event.appendChild(start);
 
