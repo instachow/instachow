@@ -54,11 +54,14 @@ body {
 
 .event-container {
     margin: 10px;
-    padding: 5px;
+    padding: 2px;
+    padding-left: 20px;
     background-color: lightgrey;
     box-sizing: border-box;
 }
 
 #down-arrow {
-    align-content: center;
+    text-align: center;
+    margin: auto;
+    width: 100%;
 }
