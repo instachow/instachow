@@ -1,2 +1,41 @@
+{
+    "Events": {
+        "0": {
+            "id": 1,
+            "title": "MENA Banquet Leftovers",
+            "lat": 42.051588,
+            "lng": -87.674791,
+            "startTime": "",
+            "endTime": "",
+            "foodCategories": ["salad", "pizza", "middle-eastern"],
+            "description": "Kresge Room 2-235 \n Falafel, hummus, and more!",
+            "comments": []
+        },
+        "1": {
+            "id": 1,
+            "title": "MENA Banquet Leftovers",
+            "lat": 42.051588,
+            "lng": -87.674791,
+            "startTime": 1100,
+            "endTime": 1600,
+            "foodCategories": [],
+            "description": ,
+            "comments": []
+        },
+        "2": {
+            "id": 1,
+            "title": "MENA Banquet Leftovers",
+            "lat": 42.051588,
+            "lng": -87.674791,
+            "startTime": "",
+            "endTime": "",
+            "foodCategories": [],
+            "description": ,
+            "comments": []
+        }
+    }
+}
 
 
+
+title location startTime endTime foodCategories description comments
