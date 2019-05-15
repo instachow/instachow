@@ -52,6 +52,7 @@ body {
 #map {
     width: 100%;
     padding: calc(100vh - 120px) 0 0 0;
+    transition: 200ms;
 }
 
 #event-list {
@@ -106,3 +107,15 @@ i:hover{
     background-color: blue;
     border-radius: 20px;
 }
+
+/* DESKTOP STYLES */
+@media screen and (min-width: 800px) {
+    #event-popup {
+        height: calc(100% - 120px);
+        width: 400px;
+        background: white;
+        position: fixed;
+        bottom: 60px;
+        box-sizing: border-box;
+    }
+  }

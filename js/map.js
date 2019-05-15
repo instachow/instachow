@@ -1,10 +1,11 @@
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 42.057656, lng: -87.67428},
   zoom: 15,
-  disableDefaultUI: true
-
+  disableDefaultUI: true,
+  clickableIcons: false
 });
 
+console.log(eventManifest.Events);
 for (var eventID in eventManifest.Events) {
   var marker = new google.maps.Marker({
       position: {lat: eventManifest.Events[eventID].lat,
@@ -15,15 +16,18 @@ for (var eventID in eventManifest.Events) {
   });
 
   marker.addListener('click', function(e) {
+    //close old popup if there is one
+    closeEventPopup();
+
     var event = eventManifest.Events[this.eventID];
+
     var title = event.title;
     var startTime = event.startTime;
     var endTime = event.endTime;
     var description = event.description;
     var food = event.foodCategories;
     var room = event.room;
-
-    closeEventPopup();
+    
     var eventPopup = document.createElement("div");
     eventPopup.setAttribute("id", "event-popup");
     eventPopup.setAttribute("class", "details-popup icon pad");
@@ -36,6 +40,23 @@ for (var eventID in eventManifest.Events) {
             <p>" + description + "</p> \
             <i class='material-icons float-right'>directions</i>";
     document.body.append(eventPopup);
+
+    //resize map and center on the point clicked
+
+    //account for popup on left side
+    if(window.innerWidth > 799){
+      lat = event.lat;
+      lng = event.lng - 0.004;
+    }
+    //account for popup on bottom
+    else {
+      lat = event.lat  - 0.002;
+      lng = event.lng;
+    }
+    
+    map.setZoom(16);
+    map.panTo({lat, lng});
+    // marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
   });
 
 };

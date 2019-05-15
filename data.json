@@ -32,7 +32,17 @@ var eventManifest = {
             "foodCategories": [" Fast food", " Burgers"],
             "description": "Come for a sizzle!",
             "comments": []
+        },
+        "3": {
+            "title": "Some event",
+            "lat": 42.055193,
+            "lng": -87.675983,
+            "room": "Some location",
+            "startTime": "1500",
+            "endTime": "1700",
+            "foodCategories": [" Fast food", " Burgers"],
+            "description": "Come for a sizzle!",
+            "comments": []
         }
-
     }
 }
