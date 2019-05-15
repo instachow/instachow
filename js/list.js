@@ -1,7 +1,7 @@
-var listOfEvents = EventList.Events;
+var listOfEvents = eventManifest.Events;
 
 function buildEventList() {
-    var table = document.getElementById("album-list");
+    var table = document.getElementById("event-list");
     console.log(table);
     if (table != null) {
         console.log(listOfEvents);

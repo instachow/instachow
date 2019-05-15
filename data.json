@@ -33,5 +33,6 @@ var eventManifest = {
             "description": "Come for a sizzle!",
             "comments": []
         }
+
     }
 }
