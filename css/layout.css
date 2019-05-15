@@ -33,19 +33,20 @@ body {
 }
 
 .pad {
-    padding: 18px;
+    padding: 20px;
 }
 
-.pad-left {
-    padding-left: 18px;
+.pad-half {
+    padding: 10px;
+}
+
+
+.margin-left {
+    margin-left: 18px;
 }
 
 .float-right {
     float: right;
-}
-
-i:hover {
-    cursor: pointer;
 }
 
 #map {
@@ -54,14 +55,11 @@ i:hover {
 }
 
 #event-list {
-    padding: 10px;
+    height: calc(100vh - 120px);
+    overflow: scroll;
 }
 
 .event-container {
-    margin: 10px;
-    padding: 2px;
-    padding-left: 20px;
-    background-color: lightgrey;
     box-sizing: border-box;
 }
 
@@ -77,40 +75,8 @@ i:hover {
     font-size: 15pt;
 }
 
-.event-start {
-    padding: 0;
-    margin: 0;
-
-}
-
-.event-end {
-    padding: 0;
-    margin: 0;
-
-}
-
-#list-title {
-    font-size: 24pt;
-    font-weight: bold;
+#down-arrow-container {
     text-align: center;
-    padding: 10px;
-}
-
-.event-categories {
-    padding: 0;
-    margin: 0;
-
-}
-
-.event-description {
-    padding: 0;
-    margin: 0;
-
-}
-
-#down-arrow {
-    text-align: center;
-    padding-top: 15px;
     margin: auto;
     width: 100%;
 }
@@ -120,19 +86,14 @@ a {
     color: inherit;
 }
 
-
-.event-title {
-    text-align: center;
-    padding-top: 12px;
+i {
+    padding:8px;
+    border-radius: 50%;
 }
 
-.text-event-info {
-    display: inline;
-}
-
-.food-categories {
-    box-sizing: border-box;
-    display: inline;
+i:hover{
+    cursor: pointer !important;
+    background-color: lightgray;
 }
 
 .food-type {

@@ -8,43 +8,33 @@ function buildEventList() {
         for (var i in listOfEvents) {
             var event = document.createElement('div');
             event.classList.add('event-container');
+            event.classList.add('pad');
+            var eventData = listOfEvents[i];
 
-            var start = document.createElement('p');
-            start.classList.add('event-title');
-            start.innerHTML = listOfEvents[i].title;
-            event.appendChild(start);
+            var title = document.createElement('h3');
+            title.classList.add('event-title');
+            title.innerHTML = eventData.title;
+            event.appendChild(title);
 
-            var start = document.createElement('p');
-            start.classList.add('event-start');
-            var st = listOfEvents[i].startTime;
-            console.log(listOfEvents[i]);
+            var time = document.createElement('h4');
+            time.classList.add('event-start');
+            var st = eventData.startTime;
+            var et = eventData.endTime;
+            time.innerHTML = formatDate(st) + " - " + formatDate(et);
+            event.appendChild(time);
 
-            start.innerHTML = formatDate(st);
-            event.appendChild(start);
-            console.log(start, "hi");
-            var end = document.createElement('p');
-            end.classList.add('event-end');
-            et = listOfEvents[i].endTime;
-            end.innerHTML = formatDate(et);
-            event.appendChild(end);
-
-            var categories = document.createElement('p');
+            var categories = document.createElement('h4');
             categories.classList.add('event-categories');
-            var cat = listOfEvents[i].foodCategories;
-            var string = "";
-            console.log(cat);
-            for (var j in cat) {
-                console.log(cat[j]);
-                string += cat[j] + ", ";
-            }
-            categories.innerHTML = string;
+            var cat = eventData.foodCategories;
+            categories.innerHTML = cat;
             event.appendChild(categories);
 
             var description = document.createElement('p');
             description.classList.add('event-description');
-            description.innerHTML = listOfEvents[i].description;
+            description.innerHTML = eventData.description;
             event.appendChild(description);
             table.appendChild(event);
+            table.appendChild(document.createElement('hr'));
         }
     }
 }
