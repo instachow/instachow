@@ -1,4 +1,6 @@
-var EventManifest = {
+
+var eventManifest = {
+>>>>>>> 2f7cb254873d8bd1644650df64af3784fbf89b30
     "Events": {
         "0": {
             "title": "MENA Banquet Leftovers",
@@ -13,8 +15,8 @@ var EventManifest = {
         },
         "1": {
             "title": "Computer Science party",
-            "lat": 42.058059,
-            "lng": -87.674345,
+            "lat": 42.057995,
+            "lng": -87.674311,
             "room": "Mudd room 3130",
             "startTime": "1800",
             "endTime": "2030",
@@ -24,8 +26,8 @@ var EventManifest = {
         },
         "2": {
             "title": "Sig Chi? Sig FRY",
-            "lat": 42.058991,
-            "lng": -87.676176,
+            "lat": 42.059031,
+            "lng": -87.676087,
             "room": "Sig Chi lawn",
             "startTime": "1100",
             "endTime": "1300",
