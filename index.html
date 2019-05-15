@@ -10,8 +10,7 @@
         <div class="header-container pad">
             Instachow
         </div>
-        <div class="main-container pad">
-            main container
+        <div class="main-container">
             <div id="map"></div>
         </div>
         <div class="bottom-nav pad">
@@ -19,8 +18,8 @@
             <i class="material-icons pad-left">add_location</i>
         </div>
 
-        <div class="details-popup icon  pad">
-            <i class="material-icons float-right">close</i>
+        <div id="event-popup" class="icon pad">
+            <i class="material-icons float-right" onclick="closeEventPopup()">close</i>
             <h3 id='event-popup-title'> MENA Banquet </h3> 
             <h4 id='event-popup-room'> Kresge 4-111 </h4>
             <h4 id='event-popup-start-time'> Start time: 13:00 </h4> 
@@ -33,5 +32,6 @@ AIzaSyCB76W2ds98ZynBgTF0BEtV6AgIiHsrHA8
 &callback=initMap" type="text/javascript"></script>
     <script src="data.json"></script>
     <script src="js/map.js"></script>
+    <script src="js/events.js"></script>
     </body>
 </html>
