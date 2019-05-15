@@ -48,8 +48,8 @@ i:hover {
 }
 
 #map {
-	width: 100%;
-	padding: calc(100vh - 120px) 0 0 0;
+    width: 100%;
+    padding: calc(100vh - 120px) 0 0 0;
 }
 
 #event-list {
@@ -66,6 +66,40 @@ i:hover {
 
 #down-arrow {
     text-align: center;
+    padding-top: 15px;
     margin: auto;
     width: 100%;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.event-title{
+    text-align: center;
+    padding-top: 12px;
+}
+
+.text-event-info{
+    display: inline;
+
+}
+
+.food-categories{
+    box-sizing: border-box;
+    display: inline;
+}
+
+.food-type{
+    width: 135px;
+    height: 40px;
+    border: 1px solid lightgrey;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: blue;
+    border-radius: 20px;
+}
+

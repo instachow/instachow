@@ -1,6 +1,8 @@
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 42.057656, lng: -87.67428},
-    zoom: 15
+  zoom: 15,
+  disableDefaultUI: true
+
 });
 
 for (var eventID in eventManifest.Events) {
