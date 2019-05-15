@@ -22,7 +22,7 @@ body {
     box-sizing: border-box;
 }
 
-.details-popup{
+#event-popup{
     height:260px;
     width:100%;
     background:white;

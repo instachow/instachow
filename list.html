@@ -1,17 +1,17 @@
 <html>
 
-<head>
+<header>
     <title>List</title>
 
     <link rel="stylesheet" type="text/css" href="css/layout.css">
-</head>
+</header>
 
 <body>
     <div class="header-container">
         This will be our header container
     </div>
     <div class="main-container">
-        <div class="album-list">
+        <div id="album-list">
 
         </div>
     </div>
@@ -19,8 +19,10 @@
         bottom nav container
     </div>
 </body>
+<script src="data.json"></script>
+<script src="js/list.js"></script>
 <script>
-    src = "js/list.js"
+    buildEventList();
 </script>
 
 </html>
