@@ -1,4 +1,4 @@
-var listOfEvents = EventManifest.Events;
+var listOfEvents = eventManifest.Events;
 
 function buildEventList() {
     var table = document.getElementById("event-list");
