@@ -43,10 +43,6 @@ body {
     float: right;
 }
 
-i:hover {
-    cursor: pointer;
-}
-
 #map {
     width: 100%;
     padding: calc(100vh - 120px) 0 0 0;
@@ -64,49 +60,6 @@ i:hover {
     box-sizing: border-box;
 }
 
-.event-start {
-    padding: 0;
-}
-
-.event-title-list {
-    text-align: left;
-    padding: 0;
-    margin: 0;
-    font-weight: bold;
-    font-size: 15pt;
-}
-
-.event-start {
-    padding: 0;
-    margin: 0;
-
-}
-
-.event-end {
-    padding: 0;
-    margin: 0;
-
-}
-
-#list-title {
-    font-size: 24pt;
-    font-weight: bold;
-    text-align: center;
-    padding: 10px;
-}
-
-.event-categories {
-    padding: 0;
-    margin: 0;
-
-}
-
-.event-description {
-    padding: 0;
-    margin: 0;
-
-}
-
 #down-arrow {
     text-align: center;
     padding-top: 15px;
@@ -120,21 +73,20 @@ a {
 }
 
 
-.event-title {
+.event-title{
     text-align: center;
     padding-top: 12px;
 }
 
-.text-event-info {
-    display: inline;
+.text-event-info{
 }
 
-.food-categories {
+.food-categories{
     box-sizing: border-box;
     display: inline;
 }
 
-.food-type {
+.food-type{
     width: 135px;
     height: 40px;
     border: 1px solid lightgrey;
@@ -144,3 +96,4 @@ a {
     background-color: blue;
     border-radius: 20px;
 }
+

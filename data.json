@@ -1,4 +1,4 @@
-var EventList = {
+var eventManifest = {
     "Events": {
         "0": {
             "title": "MENA Banquet Leftovers",
@@ -13,8 +13,8 @@ var EventList = {
         },
         "1": {
             "title": "Computer Science party",
-            "lat": 42.058059,
-            "lng": -87.674345,
+            "lat": 42.057995,
+            "lng": -87.674311,
             "room": "Mudd room 3130",
             "startTime": "1800",
             "endTime": "2030",
@@ -24,8 +24,8 @@ var EventList = {
         },
         "2": {
             "title": "Sig Chi? Sig FRY",
-            "lat": 42.058991,
-            "lng": -87.676176,
+            "lat": 42.059031,
+            "lng": -87.676087,
             "room": "Sig Chi lawn",
             "startTime": "1100",
             "endTime": "1300",
@@ -33,5 +33,6 @@ var EventList = {
             "description": "Come for a sizzle!",
             "comments": []
         }
+
     }
 }
