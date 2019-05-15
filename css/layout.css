@@ -45,7 +45,7 @@ body {
 
 #map {
 	width: 100%;
-	padding-top: calc(100vh - 120px) 0 0 0;
+	padding: calc(100vh - 120px) 0 0 0;
 }
 
 #event-list {
