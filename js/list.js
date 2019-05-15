@@ -20,7 +20,7 @@ function buildEventList() {
             time.classList.add('event-start');
             var st = eventData.startTime;
             var et = eventData.endTime;
-            time.innerHTML = formatDate(st) + " - " + formatDate(et);
+            time.innerHTML = "Time: " + formatDate(st) + " - " + formatDate(et);
             event.appendChild(time);
 
             var categories = document.createElement('h4');
