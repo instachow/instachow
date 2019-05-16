@@ -2,17 +2,59 @@ var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 42.057656, lng: -87.67428},
   zoom: 15,
   disableDefaultUI: true,
-  clickableIcons: false
+  clickableIcons: false,
+  styles: [
+    {
+      "featureType": "poi",
+      "stylers": [
+        {
+          "visibility": "simplified"
+        }
+      ]
+    },
+    {
+      "featureType": "poi",
+      "elementType": "labels",
+      "stylers": [
+        {
+          "weight": 1.5
+        }
+      ]
+    },
+    {
+      "featureType": "poi.business",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "labels.text",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    }
+  ]
+  
+  
+  
+  
 });
 
 console.log(eventManifest.Events);
 for (var eventID in eventManifest.Events) {
+  console.log(Math.floor(Math.random()*15));
   var marker = new google.maps.Marker({
       position: {lat: eventManifest.Events[eventID].lat,
         lng: eventManifest.Events[eventID].lng},
       map: map,
       title: 'Click to zoom',
-      eventID: eventID
+      eventID: eventID,
+      icon: 'assets/' + Math.floor(Math.random()*16) + '.png'
   });
 
   marker.addListener('click', function(e) {

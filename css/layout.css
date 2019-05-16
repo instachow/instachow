@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    border-radius: 5px;
 }
 
 .header-container {
@@ -11,7 +12,7 @@ body {
 }
 
 h3 {
-    font-size: 20pt;
+    font-size: 16pt;
     font-weight: bold;
     margin-top: -5px;
     margin-bottom: 10px;
@@ -45,11 +46,14 @@ p {
 
 #event-popup {
     height: auto;
-    width: 100%;
+    width: calc(100% - 12px);
     background: white;
     position: fixed;
-    bottom: 60px;
+    left:6px;
+    bottom: 66px;
     box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 0 5px 0px gray;
 }
 
 .pad {
@@ -63,6 +67,10 @@ p {
 
 .margin-left {
     margin-left: 18px;
+}
+
+.pad-left {
+    padding-left: 18px;
 }
 
 .float-right {
@@ -131,11 +139,12 @@ i:hover {
 /* DESKTOP STYLES */
 @media screen and (min-width: 800px) {
     #event-popup {
-        height: calc(100% - 120px);
+        height: calc(100% - 132px);
         width: 400px;
         background: white;
         position: fixed;
-        bottom: 60px;
+        bottom: 66px;
+        left:6px
         box-sizing: border-box;
     }
   }
