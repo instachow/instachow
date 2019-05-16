@@ -1,2 +1,48 @@
-
-
+var eventManifest = {
+    "Events": {
+        "0": {
+            "title": "MENA Banquet Leftovers",
+            "lat": 42.051588,
+            "lng": -87.674791,
+            "room": "Kresge 2-235",
+            "startTime": "1100",
+            "endTime": "1600",
+            "foodCategories": [" Salad", " Pizza", " Middle-eastern"],
+            "description": "Falafel, hummus, and more!",
+            "comments": []
+        },
+        "1": {
+            "title": "Computer Science party",
+            "lat": 42.057995,
+            "lng": -87.674311,
+            "room": "Mudd 3130",
+            "startTime": "1800",
+            "endTime": "2030",
+            "foodCategories": [" Pizza", " Asian"],
+            "description": "Come celebrate computer science!",
+            "comments": []
+        },
+        "2": {
+            "title": "Sigma Fry",
+            "lat": 42.059031,
+            "lng": -87.676087,
+            "room": "Sigma Chi lawn",
+            "startTime": "1100",
+            "endTime": "1300",
+            "foodCategories": [" Fast food", " Burgers"],
+            "description": "Come for a sizzle!",
+            "comments": []
+        },
+        "3": {
+            "title": "Some event",
+            "lat": 42.055193,
+            "lng": -87.675983,
+            "room": "Some location",
+            "startTime": "1500",
+            "endTime": "1700",
+            "foodCategories": [" Fast food", " Burgers"],
+            "description": "Come for a sizzle!",
+            "comments": []
+        }
+    }
+}

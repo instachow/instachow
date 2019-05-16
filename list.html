@@ -1,0 +1,31 @@
+<html>
+
+<header>
+    <title>List</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</header>
+
+<body>
+    <div class="header-container pad">
+        <strong style="font-size: 22px;">Instachow</strong>
+    </div>
+    <div class="main-container">
+        <div id="event-list">
+
+        </div>
+    </div>
+    <div class="bottom-nav pad-half">
+        <div id="down-arrow-container">
+                <i class="material-icons"><a href="index.html">keyboard_arrow_down</a></i>
+        </div>
+    </div>
+</body>
+<script src="data.json"></script>
+<script src="js/list.js"></script>
+<script>
+    buildEventList();
+</script>
+
+</html>
