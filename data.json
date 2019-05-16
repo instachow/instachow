@@ -35,7 +35,7 @@ var eventManifest = {
         },
         "3": {
             "title": "Some event",
-            "lat": 42.055193,
+            "lat": 42.053193,
             "lng": -87.675983,
             "room": "Some location",
             "startTime": "1500",
