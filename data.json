@@ -34,14 +34,14 @@ var eventManifest = {
             "comments": []
         },
         "3": {
-            "title": "Some event",
+            "title": "Faculty's birthday",
             "lat": 42.053193,
             "lng": -87.675983,
-            "room": "Some location",
+            "room": "University Lawn",
             "startTime": "1500",
             "endTime": "1700",
-            "foodCategories": [" Fast food", " Burgers"],
-            "description": "Come for a sizzle!",
+            "foodCategories": [" Smoothies", " Cupcakes"],
+            "description": "Free food- help us finish it!",
             "comments": []
         }
     }
