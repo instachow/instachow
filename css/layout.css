@@ -1,13 +1,34 @@
 body {
     margin: 0;
+    border-radius: 5px;
 }
 
 .header-container {
     width: 100%;
     height: 60px;
     background-color: white;
-    color:black;
+    color: black;
     box-sizing: border-box;
+}
+
+h3 {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-top: -5px;
+    margin-bottom: 10px;
+
+}
+
+h4 {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-style: italic;
 }
 
 .main-container {
@@ -21,15 +42,20 @@ body {
     height: 60px;
     background: white;
     box-sizing: border-box;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 #event-popup {
     height: auto;
-    width: 100%;
+    width: calc(100% - 12px);
     background: white;
     position: fixed;
-    bottom: 60px;
+    left:6px;
+    bottom: 66px;
     box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 0 5px 0px gray;
 }
 
 .pad {
@@ -45,6 +71,10 @@ body {
     margin-left: 18px;
 }
 
+.pad-left {
+    padding-left: 18px;
+}
+
 .float-right {
     float: right;
 }
@@ -52,6 +82,7 @@ body {
 #map {
     width: 100%;
     padding: calc(100vh - 120px) 0 0 0;
+    transition: 200ms;
 }
 
 #event-list {
@@ -67,12 +98,12 @@ body {
     padding: 0;
 }
 
-.event-title-list {
-    text-align: left;
-    padding: 0;
-    margin: 0;
+.event-title {
+    text-align: center;
     font-weight: bold;
-    font-size: 15pt;
+    font-size: 24pt;
+    padding-top: 10px;
+
 }
 
 #down-arrow-container {
@@ -87,11 +118,11 @@ a {
 }
 
 i {
-    padding:8px;
+    padding: 8px;
     border-radius: 50%;
 }
 
-i:hover{
+i:hover {
     cursor: pointer !important;
     background-color: lightgray;
 }
@@ -106,3 +137,16 @@ i:hover{
     background-color: blue;
     border-radius: 20px;
 }
+
+/* DESKTOP STYLES */
+@media screen and (min-width: 800px) {
+    #event-popup {
+        height: calc(100% - 132px);
+        width: 400px;
+        background: white;
+        position: fixed;
+        bottom: 66px;
+        left:6px
+        box-sizing: border-box;
+    }
+  }
