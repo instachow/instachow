@@ -79,16 +79,21 @@ for (var eventID in eventManifest.Events) {
             <i class='material-icons float-right'>directions</i>";
     document.body.append(eventPopup);
 
-    //resize map and center on the point clicked
-
+  //resize map and center on the point clicked
     //account for popup on left side
     if(window.innerWidth > 799){
       lat = event.lat;
+      if(lat > 0)
+      lng = event.lng + 0.004;
+      else
       lng = event.lng - 0.004;
     }
     //account for popup on bottom
     else {
+      if(lng > 0)
       lat = event.lat  - 0.002;
+      else
+      lat = event.lat  + 0.002;
       lng = event.lng;
     }
     

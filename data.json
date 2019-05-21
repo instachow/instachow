@@ -43,6 +43,17 @@ var eventManifest = {
             "foodCategories": [" Smoothies", " Cupcakes"],
             "description": "Free food- help us finish it!",
             "comments": []
+        },
+        "4": {
+            "title": "Far event",
+            "lat": -42.053193,
+            "lng": 3.675983,
+            "room": "Literally nowhere anyone has ever been",
+            "startTime": "0000",
+            "endTime": "2400",
+            "foodCategories": [" Fish", " Crustaceans"],
+            "description": "Free food- help us finish it!",
+            "comments": []
         }
     }
 }

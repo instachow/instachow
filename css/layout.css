@@ -141,12 +141,14 @@ i:hover {
 /* DESKTOP STYLES */
 @media screen and (min-width: 800px) {
     #event-popup {
-        height: calc(100% - 132px);
+        display: table;
+        height: auto;
+        max-height: calc(100% - 132px);
         width: 400px;
         background: white;
         position: fixed;
-        bottom: 66px;
-        left:6px
+        top: 66px;
+        left:6px;
         box-sizing: border-box;
     }
   }
