@@ -55,6 +55,7 @@ for (var eventID in eventManifest.Events) {
 
   marker.addListener('click', function(e) {
     //close old popup if there is one
+    closeFilterPopup();
     closeEventPopup();
 
     var event = eventManifest.Events[this.eventID];
@@ -68,7 +69,7 @@ for (var eventID in eventManifest.Events) {
     
     var eventPopup = document.createElement("div");
     eventPopup.setAttribute("id", "event-popup");
-    eventPopup.setAttribute("class", "details-popup icon pad");
+    eventPopup.setAttribute("class", "event-popup details-popup icon pad");
     eventPopup.innerHTML += "\
             <i class='material-icons float-right' onclick='closeEventPopup()'>close</i>\
             <h3>" + title + "</h3> \

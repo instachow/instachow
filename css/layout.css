@@ -39,6 +39,7 @@ p {
 }
 
 .bottom-nav {
+    bottom:30px;
     height: 60px;
     background: white;
     box-sizing: border-box;
@@ -46,7 +47,7 @@ p {
     -webkit-transform: translateZ(0);
 }
 
-#event-popup {
+.event-popup {
     height: auto;
     width: calc(100% - 12px);
     background: white;
@@ -56,6 +57,15 @@ p {
     box-sizing: border-box;
     border-radius: 8px;
     box-shadow: 0 0 5px 0px gray;
+}
+
+strong{
+}
+
+#filter-popup{
+    position: fixed;
+    left:6px;
+    bottom: 66px;
 }
 
 .pad {
@@ -140,7 +150,7 @@ i:hover {
 
 /* DESKTOP STYLES */
 @media screen and (min-width: 800px) {
-    #event-popup {
+    .event-popup {
         display: table;
         height: auto;
         max-height: calc(100% - 132px);

@@ -57,3 +57,16 @@ var eventManifest = {
         }
     }
 }
+
+var availableFilters = {
+    "Filters" : {
+        " Fish": "True",
+        " Crustaceans": "True",
+        " Smoothies":"True",
+        " Cupcakes" : "True",
+        " Fast food": "True",
+        " Burgers": "True",
+        " Pizza":"True",
+        " Asian":"True"
+    }
+}
