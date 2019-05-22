@@ -122,6 +122,46 @@ p {
 
 }
 
+#new-popup {
+
+}
+
+.new-form {
+    width: 90%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.new-form * {
+    margin: 1em 0 1em 0;
+}
+
+.new-wide-field {
+    width: 100%;
+}
+
+.new-mid-field {
+    width: 40%;
+}
+
+.new-button {
+    width: 10em;
+    color: white;
+    border-radius: 8px;
+    border-width: 0;
+}
+
+#new-create-event {
+    background-color: #22c152;
+    float: right;
+}
+
+#new-cancel-event {
+    background-color: #aaa;
+    float: left;
+}
+
 #down-arrow-container {
     text-align: center;
     margin: auto;

@@ -50,3 +50,22 @@ function toggleFilter(food) {
   filterMarkers();
 }
 
+function openNewPopup() {
+  closeFilterPopup();
+  var newPopup = document.createElement("div");
+  newPopup.setAttribute("id", "new-popup");
+  newPopup.setAttribute("class", "event-popup icon pad");
+  newPopup.innerHTML = "<form class='new-form'>\
+                <input type='text' class='new-wide-field' id='new-event-name'\
+                placeholder='Event name'>\
+                <input type='text' class='new-wide-field' id='new-event-location'\
+                placeholder='Location'>\
+                <input type='text' class='new-mid-field' id='new-event-time-start'\
+                placeholder='Start'>\
+                <input type='text' class='new-mid-field' id='new-event-time-end'\
+                placeholder='End'>\
+                <button class='new-button' id='new-cancel-event'><i class='material-icons'>close</i></button>\
+                <button class='new-button' id='new-create-event'><i class='material-icons'>done</i></button>\
+            </form>"
+  document.body.append(newPopup);
+}
