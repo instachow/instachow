@@ -130,7 +130,7 @@ for (var eventID in eventManifest.Events) {
 
 function filterMarkers(){
   for(var i in markers){
-    let toDisplay = 0;
+    let toDisplay = (filterList.length == 2);
     for(j in markers[i].foodCategories){
       if (filterList.indexOf(markers[i].foodCategories[j]) > -1){
         toDisplay = 1;
