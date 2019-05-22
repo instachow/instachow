@@ -128,16 +128,19 @@ for (var eventID in eventManifest.Events) {
   markers.push(marker);
 };
 
-function filterMarkers() {
-  for (var i in markers) {
-    console.log(markers[i]);
-    for (j in markers[i].foodCategories) {
-      if (!filterList.indexOf(markers[i].foodCategories[j]) > -1) {
-        markers[i].setMap(null);
-      } else {
-        markers[i].setMap(map);
+function filterMarkers(){
+  for(var i in markers){
+    let toDisplay = 0;
+    for(j in markers[i].foodCategories){
+      if (filterList.indexOf(markers[i].foodCategories[j]) > -1){
+        toDisplay = 1;
       }
-      // console.log(markers[i].foodCategories[j]);
+    }
+    console.log(markers[i].title + ": " + toDisplay);
+    if (toDisplay) {
+      markers[i].setMap(map);
+    } else {
+      markers[i].setMap(null);
     }
   }
 }

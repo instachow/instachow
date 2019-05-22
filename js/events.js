@@ -46,10 +46,12 @@ function closeFilterPopup() {
 }
 
 function toggleFilter(food) {
-  if(currentFilters.includes(food))
-    currentFilters.pop(food);
-  else
+  var i = currentFilters.indexOf(food);
+  if (i > -1) {
+    currentFilters.splice(i, 1);
+  } else {
     currentFilters.push(food);
+  }
   var filterToToggle = document.getElementById(food);
   if (filterToToggle) {
     filterToToggle.classList.toggle("active-filter");
