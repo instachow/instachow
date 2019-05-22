@@ -6,7 +6,7 @@ body {
 .header-container {
     width: 100%;
     height: 60px;
-    background-color: white;
+    background-color: lavender;
     color: black;
     box-sizing: border-box;
 }
@@ -39,12 +39,17 @@ p {
 }
 
 .bottom-nav {
-    bottom:30px;
+    bottom: 30px;
     height: 60px;
-    background: white;
+    background: lavender;
     box-sizing: border-box;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+}
+
+span {
+    vertical-align: 5px;
+    display: inline-block;
 }
 
 .event-popup {
@@ -52,24 +57,24 @@ p {
     width: calc(100% - 12px);
     background: white;
     position: fixed;
-    left:6px;
+    left: 6px;
     bottom: 66px;
     box-sizing: border-box;
     border-radius: 8px;
     box-shadow: 0 0 5px 0px gray;
 }
 
-#filter-popup{
+#filter-popup {
     position: fixed;
-    left:6px;
+    left: 6px;
     bottom: 66px;
 }
 
-#filter-popup h4:hover{
+#filter-popup h4:hover {
     cursor: pointer;
 }
 
-.active-filter{
+.active-filter {
     border: 1px solid lightgrey;
 }
 
@@ -164,7 +169,7 @@ i:hover {
         background: white;
         position: fixed;
         top: 66px;
-        left:6px;
+        left: 6px;
         box-sizing: border-box;
     }
-  }
+}
