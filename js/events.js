@@ -5,9 +5,10 @@ function closeEventPopup() {
   }
 }
 
-var currentFilters = [];
+currentFilters = [];
 
 function openFilterPopup(){
+  closeEventPopup();
   var filterPopup = document.createElement("div");
   filterPopup.setAttribute("id", "filter-popup");
   filterPopup.setAttribute("class", "event-popup icon pad");
@@ -21,7 +22,7 @@ function openFilterPopup(){
     var filterItem = document.createElement("h4");
     filterItem.setAttribute("id", food);
     filterItem.setAttribute("class", "food-type");
-    filterItem.setAttribute("onclick", "addToFilter(\"" + food + "\")");
+    filterItem.setAttribute("onclick", "toggleFilter(\"" + food + "\")");
     filterItem.innerHTML +=  food;
     filterPopup.append(filterItem);
   }
@@ -36,12 +37,35 @@ function closeFilterPopup() {
   }
 }
 
-function addToFilter(food) {
-  currentFilters.push(food);
+function toggleFilter(food) {
+  if(currentFilters.includes(food))
+    currentFilters.pop(food);
+  else
+    currentFilters.push(food);
   var filterToToggle = document.getElementById(food);
   if (filterToToggle) {
-    console.log("hello Filter to Toggle" + filterToToggle);
     filterToToggle.classList.toggle("active-filter");
   }
+  filterList = JSON.stringify(currentFilters);
+  filterMarkers();
 }
 
+function openNewPopup() {
+  closeFilterPopup();
+  var newPopup = document.createElement("div");
+  newPopup.setAttribute("id", "new-popup");
+  newPopup.setAttribute("class", "event-popup icon pad");
+  newPopup.innerHTML = "<form class='new-form'>\
+                <input type='text' class='new-wide-field' id='new-event-name'\
+                placeholder='Event name'>\
+                <input type='text' class='new-wide-field' id='new-event-location'\
+                placeholder='Location'>\
+                <input type='text' class='new-mid-field' id='new-event-time-start'\
+                placeholder='Start'>\
+                <input type='text' class='new-mid-field' id='new-event-time-end'\
+                placeholder='End'>\
+                <button class='new-button' id='new-cancel-event'><i class='material-icons'>close</i></button>\
+                <button class='new-button' id='new-create-event'><i class='material-icons'>done</i></button>\
+            </form>"
+  document.body.append(newPopup);
+}
