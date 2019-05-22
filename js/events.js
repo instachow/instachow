@@ -20,6 +20,7 @@ function openFilterPopup(){
   for(food in filters){
     var filterItem = document.createElement("h4");
     filterItem.setAttribute("id", food);
+    filterItem.setAttribute("class", "food-type");
     filterItem.setAttribute("onclick", "addToFilter(\"" + food + "\")");
     filterItem.innerHTML +=  food;
     filterPopup.append(filterItem);

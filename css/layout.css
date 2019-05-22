@@ -59,10 +59,6 @@ p {
     box-shadow: 0 0 5px 0px gray;
 }
 
-strong{
-
-}
-
 #filter-popup{
     position: fixed;
     left:6px;
@@ -74,8 +70,10 @@ strong{
 }
 
 .active-filter{
-    background:blue;
+    border: 1px solid lightgrey;
 }
+
+
 
 .pad {
     padding: 20px;
@@ -189,11 +187,10 @@ i:hover {
 .food-type {
     width: 135px;
     height: 40px;
-    border: 1px solid lightgrey;
     text-align: center;
     box-sizing: border-box;
     display: inline-block;
-    background-color: blue;
+    background-color: lightgray;
     border-radius: 20px;
 }
 
