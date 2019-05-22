@@ -1,3 +1,5 @@
+var markers = [];
+
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 42.057656, lng: -87.67428},
   zoom: 15,
@@ -41,16 +43,16 @@ var map = new google.maps.Map(document.getElementById('map'), {
   ]
 });
 
-console.log(eventManifest.Events);
 for (var eventID in eventManifest.Events) {
-  console.log(Math.floor(Math.random()*15));
+  var event = eventManifest.Events[eventID];
   var marker = new google.maps.Marker({
-      position: {lat: eventManifest.Events[eventID].lat,
-        lng: eventManifest.Events[eventID].lng},
+      position: {lat: event.lat,
+        lng: event.lng},
       map: map,
-      title: 'Click to zoom',
+      title: event.title,
       eventID: eventID,
-      icon: 'assets/' + Math.floor(Math.random()*16) + '.png'
+      icon: 'assets/' + Math.floor(Math.random()*16) + '.png',
+      foodCategories:event.foodCategories
   });
 
   marker.addListener('click', function(e) {
@@ -100,7 +102,20 @@ for (var eventID in eventManifest.Events) {
     
     map.setZoom(16);
     map.panTo({lat, lng});
-    // marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
   });
-
+  markers.push(marker);
 };
+
+function filterMarkers(){
+  for(var i in markers){
+    console.log(markers[i]);
+    for(j in markers[i].foodCategories){
+      if(!filterList.indexOf(markers[i].foodCategories[j]) > -1){
+        markers[i].setMap(null);
+      } else {
+        markers[i].setMap(map);
+      }
+      // console.log(markers[i].foodCategories[j]);
+    }
+  }
+}

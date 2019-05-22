@@ -5,9 +5,10 @@ function closeEventPopup() {
   }
 }
 
-var currentFilters = [];
+currentFilters = [];
 
 function openFilterPopup(){
+  closeEventPopup();
   var filterPopup = document.createElement("div");
   filterPopup.setAttribute("id", "filter-popup");
   filterPopup.setAttribute("class", "event-popup icon pad");
@@ -21,7 +22,7 @@ function openFilterPopup(){
     var filterItem = document.createElement("h4");
     filterItem.setAttribute("id", food);
     filterItem.setAttribute("class", "food-type");
-    filterItem.setAttribute("onclick", "addToFilter(\"" + food + "\")");
+    filterItem.setAttribute("onclick", "toggleFilter(\"" + food + "\")");
     filterItem.innerHTML +=  food;
     filterPopup.append(filterItem);
   }
@@ -36,12 +37,16 @@ function closeFilterPopup() {
   }
 }
 
-function addToFilter(food) {
-  currentFilters.push(food);
+function toggleFilter(food) {
+  if(currentFilters.includes(food))
+    currentFilters.pop(food);
+  else
+    currentFilters.push(food);
   var filterToToggle = document.getElementById(food);
   if (filterToToggle) {
-    console.log("hello Filter to Toggle" + filterToToggle);
     filterToToggle.classList.toggle("active-filter");
   }
+  filterList = JSON.stringify(currentFilters);
+  filterMarkers();
 }
 

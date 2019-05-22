@@ -70,10 +70,9 @@ p {
 }
 
 .active-filter{
-    border: 1px solid lightgrey;
+    background-color: green !important;
+    color:white;
 }
-
-
 
 .pad {
     padding: 20px;
@@ -145,8 +144,9 @@ i:hover {
 }
 
 .food-type {
-    width: 135px;
-    height: 40px;
+    margin:5px;
+    width: auto;
+    padding:8px 10px;
     text-align: center;
     box-sizing: border-box;
     display: inline-block;
