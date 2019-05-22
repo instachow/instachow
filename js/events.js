@@ -5,6 +5,8 @@ function closeEventPopup() {
   }
 }
 
+
+
 var filterPopup = document.createElement("div");
 filterPopup.setAttribute("id", "filter-popup");
 filterPopup.setAttribute("class", "event-popup icon pad");
@@ -15,7 +17,11 @@ var filters = availableFilters.Filters;
 console.log(filters);
     
 for(food in filters){
-  filterPopup.innerHTML += '<h4>' + food + '</h4>';
+  var filterItem = document.createElement("h4");
+  filterItem.setAttribute("id", food);
+  filterItem.onclick = addToFilter(food);
+  filterItem.innerHTML +=  food;
+  filterPopup.append(filterItem);
 }
 document.body.append(filterPopup);
 
@@ -25,3 +31,15 @@ function closeFilterPopup() {
     filterPopup.remove();
   }
 }
+
+
+
+function addToFilter(food) {
+  currentFilters.push(food);
+  var filterToToggle = document.getElementById(food);
+  if (filterToToggle) {
+    console.log("hello Filter to Toggle" + filterToToggle);
+    filterToToggle.classList.toggle("active-filter");
+  }
+}
+

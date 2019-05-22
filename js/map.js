@@ -82,20 +82,20 @@ for (var eventID in eventManifest.Events) {
 
   //resize map and center on the point clicked
     //account for popup on left side
+    lat = event.lat;
+    lng = event.lng;
     if(window.innerWidth > 799){
-      lat = event.lat;
-      if(lat > 0)
+      if(lng > 0)
       lng = event.lng + 0.004;
       else
       lng = event.lng - 0.004;
     }
     //account for popup on bottom
     else {
-      if(lng > 0)
+      if(lat > 0)
       lat = event.lat  - 0.002;
       else
       lat = event.lat  + 0.002;
-      lng = event.lng;
     }
     
     map.setZoom(16);

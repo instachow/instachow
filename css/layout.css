@@ -60,12 +60,21 @@ p {
 }
 
 strong{
+
 }
 
 #filter-popup{
     position: fixed;
     left:6px;
     bottom: 66px;
+}
+
+#filter-popup h4:hover{
+    cursor: pointer;
+}
+
+.active-filter{
+    background:blue;
 }
 
 .pad {
