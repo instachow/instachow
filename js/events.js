@@ -23,6 +23,9 @@ function openFilterPopup(){
     filterItem.setAttribute("id", food);
     filterItem.setAttribute("class", "food-type");
     filterItem.setAttribute("onclick", "toggleFilter(\"" + food + "\")");
+    if (currentFilters.indexOf(food) > -1) {
+      filterItem.classList.add("active-filter");
+    }
     filterItem.innerHTML +=  food;
     filterPopup.append(filterItem);
   }
