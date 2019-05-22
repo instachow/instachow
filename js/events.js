@@ -5,7 +5,7 @@ function closeEventPopup() {
   }
 }
 
-
+var currentFilters = [];
 
 var filterPopup = document.createElement("div");
 filterPopup.setAttribute("id", "filter-popup");
@@ -31,8 +31,6 @@ function closeFilterPopup() {
     filterPopup.remove();
   }
 }
-
-
 
 function addToFilter(food) {
   currentFilters.push(food);
