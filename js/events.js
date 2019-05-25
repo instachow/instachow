@@ -6,6 +6,10 @@ function closeEventPopup() {
 }
 
 function closeNewPopup() {
+  newEventMode = 0;
+  if (selectMarker) {
+    selectMarker.setMap(null);
+  }
   var Popup = document.getElementById('new-popup');
   if (Popup) {
     Popup.remove();
@@ -15,8 +19,7 @@ function closeNewPopup() {
 currentFilters = [];
 
 function openFilterPopup(){
-  closeNewPopup();
-  closeEventPopup();
+  closePopups();
   var filterPopup = document.createElement("div");
   filterPopup.setAttribute("id", "filter-popup");
   filterPopup.setAttribute("class", "event-popup icon pad");
@@ -63,9 +66,14 @@ function toggleFilter(food) {
   filterMarkers();
 }
 
+function newEventCreate() {
+  var storage = JSON.parse(localStorage.getItem("localManifest"));
+  console.log(storage)
+}
+
 function openNewPopup() {
-  closeFilterPopup();
-  closeEventPopup();
+  closePopups();
+  newEventMode = 1;
   var newPopup = document.createElement("div");
   newPopup.setAttribute("id", "new-popup");
   newPopup.setAttribute("class", "event-popup icon pad");
@@ -75,12 +83,18 @@ function openNewPopup() {
                 <input type='text' class='new-wide-field' id='new-event-name'\
                 placeholder='Event name'>\
                 <input type='text' class='new-wide-field' id='new-event-location'\
-                placeholder='Location'>\
+                placeholder='Select location on map'>\
                 <input type='text' class='new-mid-field' id='new-event-time-start'\
                 placeholder='Start'>\
                 <input type='text' class='new-mid-field' id='new-event-time-end'\
                 placeholder='End'>\
-                <i id='new-create-event' class='material-icons'>done</i>\
+                <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
             </form>"
   document.body.append(newPopup);
+}
+
+function closePopups() {
+  closeFilterPopup();
+  closeEventPopup();
+  closeNewPopup();
 }

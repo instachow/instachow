@@ -1,5 +1,10 @@
 var markers = [];
 
+var newEventMode = 0;
+var selectMarker = null;
+var selectLat = null;
+var selectLng = null;
+
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {
     lat: 42.057656,
@@ -37,8 +42,26 @@ var map = new google.maps.Map(document.getElementById('map'), {
   ]
 });
 
+map.addListener('click', function(e) {
+  if (newEventMode) {
+    selectLat = e.latLng.lat();
+    selectLng = e.latLng.lng();
+    if (!selectMarker) {
+      selectMarker = new google.maps.Marker({
+        position: {
+          lat: selectLat,
+          lng: selectLng
+        },
+        map: map,
+        icon: 'assets/black-pin.png',
+      });
+    } else {
+      selectMarker.setPosition(new google.maps.LatLng(selectLat, selectLng));
+      selectMarker.setMap(map);
+    }
+  }
+})
 
-console.log(eventManifest.Events);
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function (position) {
     var pos = {
@@ -76,8 +99,7 @@ for (var eventID in eventManifest.Events) {
 
   marker.addListener('click', function (e) {
     //close old popup if there is one
-    closeFilterPopup();
-    closeEventPopup();
+    closePopups();
 
     var event = eventManifest.Events[this.eventID];
 
@@ -142,5 +164,11 @@ function filterMarkers(){
     } else {
       markers[i].setMap(null);
     }
+  }
+}
+
+function hidemarkets() {
+  for (var i in markers) {
+    markers[i].setMap(null);
   }
 }
