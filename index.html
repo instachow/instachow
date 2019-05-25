@@ -1,9 +1,10 @@
 <html>
+
 <head>
     <title>Instachow</title>
     <link rel="stylesheet" type="text/css" href="css/layout.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable=no>
 </head>
 
 <body>
@@ -13,15 +14,20 @@
     <div class="main-container">
         <div id="map"></div>
     </div>
-    <div class="bottom-nav pad-half margin-left">
-        <i class="material-icons"><a href="list.html">format_list_bulleted</a></i>
-        <i class="material-icons margin-left">add_location</i>
+    <div class="bottom-nav pad-half pad-left">
+        <strong class="margin-left"> <i class="material-icons"><a href="list.html">format_list_bulleted</a></i>
+            <span>List</span></strong>
+        <strong class="margin-left"> <i class="material-icons" onclick="openNewPopup()">add_location</i><span>New
+                Event</span> </strong>
+        <strong class="margin-left"> <i class="material-icons"
+                onclick="openFilterPopup()">filter_list</i><span>Filter</span></strong>
     </div>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=
-AIzaSyCB76W2ds98ZynBgTF0BEtV6AgIiHsrHA8" type="text/javascript"></script>
-    <script src="data.json"></script>
-    <script src="js/map.js"></script>
-    <script src="js/events.js"></script>
+    AIzaSyCB76W2ds98ZynBgTF0BEtV6AgIiHsrHA8" type="text/javascript"></script>
+    <script type="text/javascript" src="data.json"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/events.js"></script>
 </body>
 
 </html>
