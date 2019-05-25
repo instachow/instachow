@@ -5,9 +5,17 @@ function closeEventPopup() {
   }
 }
 
+function closeNewPopup() {
+  var Popup = document.getElementById('new-popup');
+  if (Popup) {
+    Popup.remove();
+  }
+}
+
 currentFilters = [];
 
 function openFilterPopup(){
+  closeNewPopup();
   closeEventPopup();
   var filterPopup = document.createElement("div");
   filterPopup.setAttribute("id", "filter-popup");
@@ -57,10 +65,13 @@ function toggleFilter(food) {
 
 function openNewPopup() {
   closeFilterPopup();
+  closeEventPopup();
   var newPopup = document.createElement("div");
   newPopup.setAttribute("id", "new-popup");
   newPopup.setAttribute("class", "event-popup icon pad");
-  newPopup.innerHTML = "<form class='new-form'>\
+  newPopup.innerHTML = "<form class='pad'>\
+                <i id='new-cancel-event' class='material-icons' onclick='closeNewPopup()'>close</i>\
+                <h3> Create new event </h3>\
                 <input type='text' class='new-wide-field' id='new-event-name'\
                 placeholder='Event name'>\
                 <input type='text' class='new-wide-field' id='new-event-location'\
@@ -69,8 +80,7 @@ function openNewPopup() {
                 placeholder='Start'>\
                 <input type='text' class='new-mid-field' id='new-event-time-end'\
                 placeholder='End'>\
-                <button class='new-button' id='new-cancel-event'><i class='material-icons'>close</i></button>\
-                <button class='new-button' id='new-create-event'><i class='material-icons'>done</i></button>\
+                <i id='new-create-event' class='material-icons'>done</i>\
             </form>"
   document.body.append(newPopup);
 }

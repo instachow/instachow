@@ -143,27 +143,23 @@ span {
 
 .new-wide-field {
     width: 100%;
+    padding:10px;
+    margin:5px;
 }
 
 .new-mid-field {
-    width: 40%;
-}
-
-.new-button {
-    width: 10em;
-    color: white;
-    border-radius: 8px;
-    border-width: 0;
+    width: 50%;
+    padding:10px;
+    margin:5px;
 }
 
 #new-create-event {
-    background-color: #22c152;
+    background-color: green;
     float: right;
 }
 
 #new-cancel-event {
-    background-color: #aaa;
-    float: left;
+    float: right;
 }
 
 #down-arrow-container {
