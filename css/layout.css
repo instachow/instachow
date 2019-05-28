@@ -1,7 +1,7 @@
 body {
     margin: 0;
     border-radius: 5px;
-    font-family: sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .header-container {
@@ -10,11 +10,11 @@ body {
     background-color: white;
     color: black;
     box-sizing: border-box;
+    font-family: 'Petit Formal Script', cursive;
 }
 
 h3 {
     font-size: 16pt;
-    margin-top: -5px;
     margin-bottom: 10px;
 
 }
@@ -22,13 +22,11 @@ h3 {
 h4 {
     margin-bottom: 10px;
     margin-top: 5px;
-    font-weight: normal;
 }
 
 p {
     margin-top: 10px;
     margin-bottom: 5px;
-    font-style: italic;
 }
 
 .main-container {
@@ -50,14 +48,17 @@ p {
 }
 
 .bottom-nav-item {
-    padding-right: 12px;
+    padding:8px;
+    padding-left:4px;
+    padding-bottom:6px; 
     margin:0 4px;
     border-radius: 3px;
     transition-duration: 0.2s;
 }
 
 .bottom-nav-item:hover {
-    box-shadow: 0 1px 2px 1px gray;
+    /* box-shadow: 0 1px 2px 1px gray; */
+    background:rgb(180, 210, 255);
     cursor: pointer;
 }
 
@@ -79,6 +80,7 @@ span {
 }
 
 #filter-popup {
+    text-align: center;
     position: fixed;
     left: 6px;
     bottom: 66px;
@@ -187,7 +189,7 @@ a {
 
 /* icon styles */
 i {
-    padding: 8px;
+    padding:0 4px;
     border-radius: 50%;
 }
 
@@ -207,6 +209,10 @@ i:hover {
     border-radius: 20px;
 }
 
+.food-type:hover {
+    cursor: pointer;
+}
+
 /* DESKTOP STYLES */
 @media screen and (min-width: 800px) {
     .event-popup {
@@ -219,6 +225,10 @@ i:hover {
         top: 66px;
         left: 6px;
         box-sizing: border-box;
+    }
+
+    #filter-popup{
+        text-align:left;
     }
 }
 

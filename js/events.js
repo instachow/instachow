@@ -27,7 +27,7 @@ function openFilterPopup(){
   console.log(filters);
       
   for(food in filters){
-    var filterItem = document.createElement("h4");
+    var filterItem = document.createElement("span");
     filterItem.setAttribute("id", food);
     filterItem.setAttribute("class", "food-type");
     filterItem.setAttribute("onclick", "toggleFilter(\"" + food + "\")");
@@ -69,7 +69,7 @@ function openNewPopup() {
   var newPopup = document.createElement("div");
   newPopup.setAttribute("id", "new-popup");
   newPopup.setAttribute("class", "event-popup icon pad");
-  newPopup.innerHTML = "<form class='pad'>\
+  newPopup.innerHTML = "<form>\
                 <i id='new-cancel-event' class='material-icons' onclick='closeNewPopup()'>close</i>\
                 <h3> Create new event </h3>\
                 <input type='text' class='new-wide-field' id='new-event-name'\
