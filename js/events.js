@@ -68,7 +68,25 @@ function toggleFilter(food) {
 
 function newEventCreate() {
   var storage = JSON.parse(localStorage.getItem("localManifest"));
-  console.log(storage)
+  if (!storage) storage = JSON.parse("{\"Events\":{}}");
+  var id = 0;
+  for (var eventID in eventManifest.Events) {
+    id++;
+  }
+  for (var eventID in storage.Events) {
+    id++;
+  }
+  //TODO: add data validation
+  var title = document.getElementById('new-event-name').value;
+  var start = document.getElementById('new-event-time-start').value;
+  var end = document.getElementById('new-event-time-end').value;
+  storage.Events[id] = {
+    "title": title,
+    "lat": selectLat,
+    "lng": selectLng,
+    "startTime": start,
+    "endTime": end,
+  }
 }
 
 function openNewPopup() {
@@ -84,9 +102,9 @@ function openNewPopup() {
                 placeholder='Event name'>\
                 <input type='text' class='new-wide-field' id='new-event-location'\
                 placeholder='Select location on map'>\
-                <input type='text' class='new-mid-field' id='new-event-time-start'\
+                <input type='time' class='new-mid-field' id='new-event-time-start'\
                 placeholder='Start'>\
-                <input type='text' class='new-mid-field' id='new-event-time-end'\
+                <input type='time' class='new-mid-field' id='new-event-time-end'\
                 placeholder='End'>\
                 <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
             </form>"

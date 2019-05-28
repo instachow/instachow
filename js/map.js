@@ -83,6 +83,7 @@ if (navigator.geolocation) {
     map.setZoom(16);
   })
 }
+
 for (var eventID in eventManifest.Events) {
   var event = eventManifest.Events[eventID];
   var marker = new google.maps.Marker({
