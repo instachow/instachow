@@ -4,23 +4,27 @@
     <title>Instachow</title>
     <link rel="stylesheet" type="text/css" href="css/layout.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Petit+Formal+Script|Source+Sans+Pro&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable=no>
 </head>
 
 <body>
     <div class="header-container pad">
-        <strong style="font-size: 22px;">Instachow</strong>
+        <span style="font-size: 22px;">Instachow</span>
     </div>
     <div class="main-container">
         <div id="map"></div>
     </div>
     <div class="bottom-nav pad-half pad-left">
-        <strong class="margin-left"> <i class="material-icons"><a href="list.html">format_list_bulleted</a></i>
-            <span>List</span></strong>
-        <strong class="margin-left"> <i class="material-icons" onclick="openNewPopup()">add_location</i><span>New
-                Event</span> </strong>
-        <strong class="margin-left"> <i class="material-icons"
-                onclick="openFilterPopup()">filter_list</i><span>Filter</span></strong>
+        <a href="list.html">
+        <span class="bottom-nav-item"> <i class="material-icons">format_list_bulleted</i>
+            <span>List</span></span>
+        </a>
+        <span class="bottom-nav-item" id="new-event-button" onclick="openNewPopup()"> <i class="material-icons">add_location</i>
+            <span>Add</span> <span class="hide-small">Event</span>
+        </span>
+        <span class="bottom-nav-item" onclick="openFilterPopup()"> <i class="material-icons">filter_list</i>
+            <span>Filter</span></span>
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=
