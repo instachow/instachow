@@ -192,45 +192,4 @@ function newEventCreate() {
   addMarker(storage.Events[id]);
   closePopups("all");
   filterMarkers();
-<<<<<<< HEAD
-=======
-  checkInputMode = false;
-}
-
-function openNewPopup() {
-  closeEventPopup();
-  closeListPopup();
-  closeFilterPopup();
-  newPopup = document.getElementById('new-popup')
-  if(newPopup) {
-    closeNewPopup();
-  }
-  else {
-  newEventMode = 1;
-  var newPopup = document.createElement("div");
-  newPopup.setAttribute("id", "new-popup");
-  newPopup.setAttribute("class", "event-popup icon pad");
-  newPopup.innerHTML = "<form>\
-                <i id='new-cancel-event' class='material-icons' onclick='closeNewPopup()'>close</i>\
-                <h3> Create new event </h3>\
-                <input type='text' class='new-wide-field' id='new-event-name'\
-                placeholder='Event name' onkeyup='checkInputStatus()'>\
-                <input type='text' class='new-wide-field' id='new-event-location'\
-                placeholder='Select location on map'>\
-                <input type='time' class='new-mid-field' id='new-event-time-start'\
-                onkeyup='checkInputStatus()'>\
-                <input type='time' class='new-mid-field' id='new-event-time-end'\
-                onkeyup='checkInputStatus()'>\
-                <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
-            </form>"
-  document.body.append(newPopup);
-  }
-}
-
-function closePopups() {
-  closeFilterPopup();
-  closeEventPopup();
-  closeNewPopup();
-  closeListPopup();
->>>>>>> 56ca4e71e8de0089ae4469fa13795e2915cde2b5
 }
