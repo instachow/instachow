@@ -1,6 +1,68 @@
+
+currentFilters = [];
+
+function openFilterPopup(){
+  closeEventPopup();
+  closeListPopup();
+  closeNewPopup();
+  filterPopup = document.getElementById('filter-popup')
+  if(filterPopup) {
+    closeFilterPopup();
+  }
+  else {
+    var filterPopup = document.createElement("div");
+    filterPopup.setAttribute("id", "filter-popup");
+    filterPopup.setAttribute("class", "event-popup icon pad");
+    filterPopup.innerHTML += "\
+            <i class='material-icons float-right' onclick='closeFilterPopup()'>close</i>\
+            <h3> Filters </h3>";
+    var filters = availableFilters.Filters;
+    console.log(filters);
+        
+    for(food in filters){
+      var filterItem = document.createElement("span");
+      filterItem.setAttribute("id", food);
+      filterItem.setAttribute("class", "food-type");
+      filterItem.setAttribute("onclick", "toggleFilter(\"" + food + "\")");
+      if (currentFilters.indexOf(food) > -1) {
+        filterItem.classList.add("active-filter");
+      }
+      filterItem.innerHTML +=  food;
+      filterPopup.append(filterItem);
+    }
+    document.body.append(filterPopup);
+  }  
+}
+
+function openListPopup() {
+  closeEventPopup();
+  closeFilterPopup();
+  closeNewPopup();
+  listPopup = document.getElementById('event-list')
+  if(listPopup) {
+    closeListPopup();
+  }
+  else {
+    buildEventList();
+    document.getElementById('event-list').style.display = "inherit"; 
+  }  
+}
+
+
+// START OF FUNCTIONS TO CLOSE POPUPS
+function closeFilterPopup() {
+  if (filterPopup = document.getElementById('filter-popup')) {
+    filterPopup.remove();
+  }
+}
+
+function closeListPopup() {
+  if(listPopup = document.getElementById('event-list'))
+    listPopup.remove();
+}
+
 function closeEventPopup() {
-  var eventPopup = document.getElementById('event-popup');
-  if (eventPopup) {
+  if (eventPopup = document.getElementById('event-popup')) {
     eventPopup.remove();
   }
 }
@@ -10,46 +72,12 @@ function closeNewPopup() {
   if (selectMarker) {
     selectMarker.setMap(null);
   }
-  var Popup = document.getElementById('new-popup');
-  if (Popup) {
+  if (Popup = document.getElementById('new-popup')) {
     Popup.remove();
   }
 }
+// END OF FUNCTIONS TO CLOSE POPUPS
 
-currentFilters = [];
-
-function openFilterPopup(){
-  closePopups();
-  var filterPopup = document.createElement("div");
-  filterPopup.setAttribute("id", "filter-popup");
-  filterPopup.setAttribute("class", "event-popup icon pad");
-  filterPopup.innerHTML += "\
-          <i class='material-icons float-right' onclick='closeFilterPopup()'>close</i>\
-          <h3> Filters </h3>";
-  var filters = availableFilters.Filters;
-  console.log(filters);
-      
-  for(food in filters){
-    var filterItem = document.createElement("span");
-    filterItem.setAttribute("id", food);
-    filterItem.setAttribute("class", "food-type");
-    filterItem.setAttribute("onclick", "toggleFilter(\"" + food + "\")");
-    if (currentFilters.indexOf(food) > -1) {
-      filterItem.classList.add("active-filter");
-    }
-    filterItem.innerHTML +=  food;
-    filterPopup.append(filterItem);
-  }
-  document.body.append(filterPopup);
-}
-
-
-function closeFilterPopup() {
-  var filterPopup = document.getElementById('filter-popup');
-  if (filterPopup) {
-    filterPopup.remove();
-  }
-}
 
 function toggleFilter(food) {
   var i = currentFilters.indexOf(food);
@@ -107,7 +135,14 @@ function newEventCreate() {
 }
 
 function openNewPopup() {
-  closePopups();
+  closeEventPopup();
+  closeListPopup();
+  closeFilterPopup();
+  newPopup = document.getElementById('new-popup')
+  if(newPopup) {
+    closeNewPopup();
+  }
+  else {
   newEventMode = 1;
   var newPopup = document.createElement("div");
   newPopup.setAttribute("id", "new-popup");
@@ -126,10 +161,12 @@ function openNewPopup() {
                 <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
             </form>"
   document.body.append(newPopup);
+  }
 }
 
 function closePopups() {
   closeFilterPopup();
   closeEventPopup();
   closeNewPopup();
+  closeListPopup();
 }

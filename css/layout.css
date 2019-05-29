@@ -69,7 +69,9 @@ span {
 
 .event-popup {
     height: auto;
+    display: table;
     width: calc(100% - 12px);
+    max-height: calc(100% - 132px);
     background: white;
     position: fixed;
     left: 6px;
@@ -77,6 +79,7 @@ span {
     box-sizing: border-box;
     border-radius: 8px;
     box-shadow: 0 0 5px 0px gray;
+    overflow:scroll;
 }
 
 #filter-popup {
@@ -122,23 +125,12 @@ span {
     transition: 200ms;
 }
 
-#event-list {
-    height: calc(100vh - 120px);
-    overflow: scroll;
-}
-
-.event-container {
-    box-sizing: border-box;
-}
-
 .event-start {
     padding: 0;
 }
 
 .event-title {
-    text-align: center;
-    font-size: 24pt;
-    padding-top: 10px;
+    margin-top: 0px;
 
 }
 
@@ -176,6 +168,10 @@ span {
     float: right;
 }
 
+.event-title-list{
+    margin-top: 0;
+}
+
 #down-arrow-container {
     text-align: center;
     margin: auto;
@@ -189,12 +185,21 @@ a {
 
 /* icon styles */
 i {
-    padding:0 4px;
+    padding:8px;
     border-radius: 50%;
 }
 
 i:hover {
     cursor: pointer !important;
+    background: lightgray;
+}
+
+.bottom-nav i {
+    padding:0 4px;
+}
+
+.bottom-nav i:hover {
+    background: none;
 }
 
 
@@ -216,7 +221,6 @@ i:hover {
 /* DESKTOP STYLES */
 @media screen and (min-width: 800px) {
     .event-popup {
-        display: table;
         height: auto;
         max-height: calc(100% - 132px);
         width: 400px;

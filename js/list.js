@@ -1,10 +1,10 @@
 var listOfEvents = eventManifest.Events;
 
 function buildEventList() {
-    var table = document.getElementById("event-list");
-    console.log(table);
+    var table = document.createElement("div");
+    table.id = 'event-list';
+    table.classList.add('event-popup');
     if (table != null) {
-        console.log(listOfEvents);
         for (var i in listOfEvents) {
             var event = document.createElement('div');
             event.classList.add('event-container');
@@ -37,4 +37,5 @@ function buildEventList() {
             table.appendChild(document.createElement('hr'));
         }
     }
+    document.body.appendChild(table);
 }
