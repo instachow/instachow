@@ -1,5 +1,5 @@
-
 currentFilters = [];
+var checkInputMode = false;
 
 function openFilterPopup(){
   closeEventPopup();
@@ -94,7 +94,39 @@ function toggleFilter(food) {
   filterMarkers();
 }
 
+function checkInputStatus() {
+  if (!checkInputMode) return;
+  var title = document.getElementById('new-event-name').value;
+  var start = document.getElementById('new-event-time-start').value;
+  var end = document.getElementById('new-event-time-end').value;
+  var icon = '8.png';
+  var status = 1;
+  if (title.length < 1) {
+    document.getElementById('new-event-name').style.borderColor = 'red';
+    status &= 0;
+  } else {
+    document.getElementById('new-event-name').style.borderColor = 'black';
+  } if (start.length < 1) {
+    document.getElementById('new-event-time-start').style.borderColor = 'red';
+    status &= 0;
+  } else {
+    document.getElementById('new-event-time-start').style.borderColor = 'black';
+  } if (end.length < 1) {
+    document.getElementById('new-event-time-end').style.borderColor = 'red';
+    status &= 0;
+  } else {
+    document.getElementById('new-event-time-end').style.borderColor = 'black';
+  } if (icon.length < 1) {
+
+  } else {
+
+  }
+  return status;
+}
+
 function newEventCreate() {
+  checkInputMode = true;
+  if (!checkInputStatus()) return;
   var storage = JSON.parse(localStorage.getItem("localManifest"));
   if (!storage) storage = JSON.parse("{\"Events\":{}}");
   var id = 0;
@@ -109,12 +141,6 @@ function newEventCreate() {
   var start = document.getElementById('new-event-time-start').value;
   var end = document.getElementById('new-event-time-end').value;
   var icon = '8.png';
-  var status = 0;
-  status |= (title.length < 1);
-  status |= (start.length < 1) << 1;
-  status |= (end.length < 1) << 2;
-  status |= (icon.length < 1) << 3;
-  if status: return status;
   storage.Events[id] = {
     "title": title,
     "lat": selectLat,
@@ -131,7 +157,7 @@ function newEventCreate() {
   addMarker(storage.Events[id]);
   closePopups();
   filterMarkers();
-  return 0;
+  checkInputMode = false;
 }
 
 function openNewPopup() {
