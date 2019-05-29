@@ -84,8 +84,7 @@ if (navigator.geolocation) {
   })
 }
 
-for (var eventID in eventManifest.Events) {
-  var event = eventManifest.Events[eventID];
+function addMarker(event) {
   var marker = new google.maps.Marker({
     position: {
       lat: event.lat,
@@ -93,7 +92,7 @@ for (var eventID in eventManifest.Events) {
     },
     map: map,
     title: event.title,
-    eventID: eventID,
+    //eventID: eventID,
     icon: 'assets/' + event.icon,
     foodCategories: event.foodCategories
   });
@@ -101,8 +100,6 @@ for (var eventID in eventManifest.Events) {
   marker.addListener('click', function (e) {
     //close old popup if there is one
     closePopups();
-
-    var event = eventManifest.Events[this.eventID];
 
     var title = event.title;
     var startTime = event.startTime;
@@ -149,7 +146,7 @@ for (var eventID in eventManifest.Events) {
     });
   });
   markers.push(marker);
-};
+}
 
 function filterMarkers(){
   for(var i in markers){
@@ -168,8 +165,26 @@ function filterMarkers(){
   }
 }
 
-function hidemarkets() {
+function hidemarkers() {
   for (var i in markers) {
     markers[i].setMap(null);
   }
 }
+
+function indexMain() {
+  //add every event in the static data
+  for (var eventID in eventManifest.Events) {
+    var event = eventManifest.Events[eventID];
+    addMarker(event);
+  };
+  
+  //add every event in the user date
+  var storage = JSON.parse(localStorage.getItem("localManifest"));
+  if (!storage) storage = JSON.parse("{\"Events\":{}}");
+  for (var eventID in storage.Events) {
+    var event = storage.Events[eventID];
+    addMarker(event);
+  };
+}
+
+indexMain();

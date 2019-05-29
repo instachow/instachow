@@ -80,13 +80,23 @@ function newEventCreate() {
   var title = document.getElementById('new-event-name').value;
   var start = document.getElementById('new-event-time-start').value;
   var end = document.getElementById('new-event-time-end').value;
+  var icon = '8.png';
   storage.Events[id] = {
     "title": title,
     "lat": selectLat,
     "lng": selectLng,
     "startTime": start,
     "endTime": end,
+    "icon": icon,
+    "description": "unimplemented",
+    "room": "unimplemented",
+    "comments": [],
+    "foodCategories": [],
   }
+  localStorage.setItem("localManifest", JSON.stringify(storage));
+  addMarker(storage.Events[id]);
+  closePopups();
+  filterMarkers();
 }
 
 function openNewPopup() {
