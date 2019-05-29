@@ -1,5 +1,5 @@
-
 currentFilters = [];
+var checkInputMode = false;
 
 function openFilterPopup(){
   closePopups("filter");
@@ -128,7 +128,40 @@ function toggleFilter(food) {
   filterMarkers();
 }
 
+function checkInputStatus() {
+  if (!checkInputMode) return;
+  var title = document.getElementById('new-event-name').value;
+  var start = document.getElementById('new-event-time-start').value;
+  var end = document.getElementById('new-event-time-end').value;
+  var icon = '8.png';
+  var status = 1;
+  if (title.length < 1) {
+    document.getElementById('new-event-name').style.borderColor = 'red';
+    status &= 0;
+  } else {
+    document.getElementById('new-event-name').style.borderColor = 'black';
+  } if (start.length < 1) {
+    document.getElementById('new-event-time-start').style.borderColor = 'red';
+    status &= 0;
+  } else {
+    document.getElementById('new-event-time-start').style.borderColor = 'black';
+  } if (end.length < 1) {
+    document.getElementById('new-event-time-end').style.borderColor = 'red';
+    status &= 0;
+  } else {
+    document.getElementById('new-event-time-end').style.borderColor = 'black';
+  } if (icon.length < 1) {
+
+  } else {
+
+  }
+  checkInputMode = false;
+  return status;
+}
+
 function newEventCreate() {
+  checkInputMode = true;
+  if (!checkInputStatus()) return;
   var storage = JSON.parse(localStorage.getItem("localManifest"));
   if (!storage) storage = JSON.parse("{\"Events\":{}}");
   var id = 0;

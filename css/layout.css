@@ -102,6 +102,10 @@ span {
     padding: 20px;
 }
 
+.margin-pad{
+    margin: 20px;
+}
+
 .pad-half {
     padding: 10px;
 }
@@ -151,12 +155,14 @@ span {
     width: 100%;
     padding:10px;
     margin:5px;
+    border-radius: 3px;
 }
 
 .new-mid-field {
     width: 50%;
     padding:10px;
     margin:5px;
+    border-radius: 3px;
 }
 
 #new-create-event {
@@ -202,10 +208,10 @@ i:hover {
     background: none;
 }
 
-#close-list-button{
+#close-list-icon{
     position:sticky;
-    top:0;
-    right:0;
+    top:20px;
+    right:20px;
 }
 
 .food-type {

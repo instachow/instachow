@@ -4,7 +4,7 @@ function buildEventList() {
     var table = document.createElement("div");
     table.id = 'event-list';
     table.classList.add('event-popup');
-    table.innerHTML += "<i id='close-list-button' class='material-icons float-right pad' onclick='closeListPopup()'>close</i>";
+    table.innerHTML += "<i id='close-list-icon' class='material-icons float-right' onclick='closeListPopup()'>close</i>";
     if (table != null) {
         for (var i in listOfEvents) {
             var event = document.createElement('div');
