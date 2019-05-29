@@ -177,13 +177,13 @@ function openNewPopup() {
                 <i id='new-cancel-event' class='material-icons' onclick='closeNewPopup()'>close</i>\
                 <h3> Create new event </h3>\
                 <input type='text' class='new-wide-field' id='new-event-name'\
-                placeholder='Event name'>\
+                placeholder='Event name' onkeyup='checkInputStatus()'>\
                 <input type='text' class='new-wide-field' id='new-event-location'\
                 placeholder='Select location on map'>\
                 <input type='time' class='new-mid-field' id='new-event-time-start'\
-                placeholder='Start'>\
+                onkeyup='checkInputStatus()'>\
                 <input type='time' class='new-mid-field' id='new-event-time-end'\
-                placeholder='End'>\
+                onkeyup='checkInputStatus()'>\
                 <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
             </form>"
   document.body.append(newPopup);
