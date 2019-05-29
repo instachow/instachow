@@ -116,11 +116,12 @@ function checkInputStatus() {
     status &= 0;
   } else {
     document.getElementById('new-event-time-end').style.borderColor = 'black';
-  } if (icon.length < 1) {
-
+  } if (!lat || !lng) {
+    //indicate that the location was not selected correctly
   } else {
 
   }
+  
   return status;
 }
 
@@ -154,6 +155,11 @@ function newEventCreate() {
     "foodCategories": [],
   }
   localStorage.setItem("localManifest", JSON.stringify(storage));
+
+  //reset selection variables
+  selectMarker = null;
+  selectLat = null;
+  selectLng = null;
   addMarker(storage.Events[id]);
   closePopups();
   filterMarkers();
