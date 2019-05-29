@@ -81,6 +81,12 @@ function newEventCreate() {
   var start = document.getElementById('new-event-time-start').value;
   var end = document.getElementById('new-event-time-end').value;
   var icon = '8.png';
+  var status = 0;
+  status |= (title.length < 1);
+  status |= (start.length < 1) << 1;
+  status |= (end.length < 1) << 2;
+  status |= (icon.length < 1) << 3;
+  if status: return status;
   storage.Events[id] = {
     "title": title,
     "lat": selectLat,
@@ -97,6 +103,7 @@ function newEventCreate() {
   addMarker(storage.Events[id]);
   closePopups();
   filterMarkers();
+  return 0;
 }
 
 function openNewPopup() {
