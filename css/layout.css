@@ -102,6 +102,10 @@ span {
     padding: 20px;
 }
 
+.margin-pad{
+    margin: 20px;
+}
+
 .pad-half {
     padding: 10px;
 }
@@ -187,7 +191,7 @@ a {
 
 /* icon styles */
 i {
-    padding:8px;
+    padding:6px;
     border-radius: 50%;
 }
 
@@ -204,6 +208,11 @@ i:hover {
     background: none;
 }
 
+#close-list-icon{
+    position:sticky;
+    top:20px;
+    right:20px;
+}
 
 .food-type {
     margin: 5px;
