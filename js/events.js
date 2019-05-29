@@ -2,9 +2,7 @@
 currentFilters = [];
 
 function openFilterPopup(){
-  closeEventPopup();
-  closeListPopup();
-  closeNewPopup();
+  closePopups("filter");
   filterPopup = document.getElementById('filter-popup')
   if(filterPopup) {
     closeFilterPopup();
@@ -35,9 +33,7 @@ function openFilterPopup(){
 }
 
 function openListPopup() {
-  closeEventPopup();
-  closeFilterPopup();
-  closeNewPopup();
+  closePopups("list");
   listPopup = document.getElementById('event-list')
   if(listPopup) {
     closeListPopup();
@@ -48,6 +44,33 @@ function openListPopup() {
   }  
 }
 
+function openNewPopup() {
+  closePopups("new");
+  newPopup = document.getElementById('new-popup')
+  if(newPopup) {
+    closeNewPopup();
+  }
+  else {
+  newEventMode = 1;
+  var newPopup = document.createElement("div");
+  newPopup.setAttribute("id", "new-popup");
+  newPopup.setAttribute("class", "event-popup icon pad");
+  newPopup.innerHTML = "<form>\
+    <i id='new-cancel-event' class='material-icons' onclick='closeNewPopup()'>close</i>\
+    <h3> Create new event </h3>\
+    <input type='text' class='new-wide-field' id='new-event-name'\
+    placeholder='Event name'>\
+    <input type='text' class='new-wide-field' id='new-event-location'\
+    placeholder='Select location on map'>\
+    <input type='time' class='new-mid-field' id='new-event-time-start'\
+    placeholder='Start'>\
+    <input type='time' class='new-mid-field' id='new-event-time-end'\
+    placeholder='End'>\
+    <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
+    </form>"
+  document.body.append(newPopup);
+  }
+}
 
 // START OF FUNCTIONS TO CLOSE POPUPS
 function closeFilterPopup() {
@@ -75,6 +98,17 @@ function closeNewPopup() {
   if (Popup = document.getElementById('new-popup')) {
     Popup.remove();
   }
+}
+
+function closePopups(excludeMe) {
+  if(excludeMe != "filter")
+    closeFilterPopup();
+  if(excludeMe != "event")
+    closeEventPopup();
+  if(excludeMe != "new")
+    closeNewPopup();
+  if(excludeMe != "list")
+    closeListPopup();
 }
 // END OF FUNCTIONS TO CLOSE POPUPS
 
@@ -123,43 +157,6 @@ function newEventCreate() {
   }
   localStorage.setItem("localManifest", JSON.stringify(storage));
   addMarker(storage.Events[id]);
-  closePopups();
+  closePopups("all");
   filterMarkers();
-}
-
-function openNewPopup() {
-  closeEventPopup();
-  closeListPopup();
-  closeFilterPopup();
-  newPopup = document.getElementById('new-popup')
-  if(newPopup) {
-    closeNewPopup();
-  }
-  else {
-  newEventMode = 1;
-  var newPopup = document.createElement("div");
-  newPopup.setAttribute("id", "new-popup");
-  newPopup.setAttribute("class", "event-popup icon pad");
-  newPopup.innerHTML = "<form>\
-                <i id='new-cancel-event' class='material-icons' onclick='closeNewPopup()'>close</i>\
-                <h3> Create new event </h3>\
-                <input type='text' class='new-wide-field' id='new-event-name'\
-                placeholder='Event name'>\
-                <input type='text' class='new-wide-field' id='new-event-location'\
-                placeholder='Select location on map'>\
-                <input type='time' class='new-mid-field' id='new-event-time-start'\
-                placeholder='Start'>\
-                <input type='time' class='new-mid-field' id='new-event-time-end'\
-                placeholder='End'>\
-                <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
-            </form>"
-  document.body.append(newPopup);
-  }
-}
-
-function closePopups() {
-  closeFilterPopup();
-  closeEventPopup();
-  closeNewPopup();
-  closeListPopup();
 }

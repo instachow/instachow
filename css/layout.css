@@ -185,7 +185,7 @@ a {
 
 /* icon styles */
 i {
-    padding:8px;
+    padding:6px;
     border-radius: 50%;
 }
 
@@ -202,6 +202,11 @@ i:hover {
     background: none;
 }
 
+#close-list-button{
+    position:sticky;
+    top:0;
+    right:0;
+}
 
 .food-type {
     margin: 5px;
