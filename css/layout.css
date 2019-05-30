@@ -193,6 +193,8 @@ a {
 i {
     padding:6px;
     border-radius: 50%;
+    margin-top:-2px;
+    margin-right:-2px;
 }
 
 i:hover {
@@ -201,6 +203,7 @@ i:hover {
 }
 
 .bottom-nav i {
+    margin:0;
     padding:0 4px;
 }
 
@@ -210,6 +213,7 @@ i:hover {
 
 #close-list-icon{
     position:sticky;
+    margin:0;
     top:20px;
     right:20px;
 }
