@@ -150,7 +150,7 @@ function checkInputStatus() {
     status &= 0;
   } else {
     document.getElementById('new-event-time-end').style.borderColor = 'black';
-  } if (!lat || !lng) {
+  } if (!selectLat || !selectLng) {
     //indicate that the location was not selected correctly
   } else {
 
@@ -188,12 +188,11 @@ function newEventCreate() {
     "foodCategories": [],
   }
   localStorage.setItem("localManifest", JSON.stringify(storage));
-
+  addMarker(storage.Events[id]);
+  closePopups("all");
+  filterMarkers();
   //reset selection variables
   selectMarker = null;
   selectLat = null;
   selectLng = null;
-  addMarker(storage.Events[id]);
-  closePopups("all");
-  filterMarkers();
 }
