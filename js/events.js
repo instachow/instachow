@@ -1,13 +1,12 @@
 currentFilters = [];
 var checkInputMode = false;
 
-function openFilterPopup(){
+function openFilterPopup() {
   closePopups("filter");
   filterPopup = document.getElementById('filter-popup')
-  if(filterPopup) {
+  if (filterPopup) {
     closeFilterPopup();
-  }
-  else {
+  } else {
     var filterPopup = document.createElement("div");
     filterPopup.setAttribute("id", "filter-popup");
     filterPopup.setAttribute("class", "event-popup icon pad");
@@ -16,8 +15,8 @@ function openFilterPopup(){
             <h3> Filters </h3>";
     var filters = availableFilters.Filters;
     console.log(filters);
-        
-    for(food in filters){
+
+    for (food in filters) {
       var filterItem = document.createElement("span");
       filterItem.setAttribute("id", food);
       filterItem.setAttribute("class", "food-type");
@@ -25,50 +24,48 @@ function openFilterPopup(){
       if (currentFilters.indexOf(food) > -1) {
         filterItem.classList.add("active-filter");
       }
-      filterItem.innerHTML +=  food;
+      filterItem.innerHTML += food;
       filterPopup.append(filterItem);
     }
     document.body.append(filterPopup);
-  }  
+  }
 }
 
 function openListPopup() {
   closePopups("list");
   listPopup = document.getElementById('event-list')
-  if(listPopup) {
+  if (listPopup) {
     closeListPopup();
-  }
-  else {
+  } else {
     buildEventList();
-    document.getElementById('event-list').style.display = "inherit"; 
-  }  
+    document.getElementById('event-list').style.display = "inherit";
+  }
 }
 
 function openNewPopup() {
   closePopups("new");
   newPopup = document.getElementById('new-popup')
-  if(newPopup) {
+  if (newPopup) {
     closeNewPopup();
-  }
-  else {
-  newEventMode = 1;
-  var newPopup = document.createElement("div");
-  newPopup.setAttribute("id", "new-popup");
-  newPopup.setAttribute("class", "event-popup icon pad");
-  newPopup.innerHTML = "<form>\
+  } else {
+    newEventMode = 1;
+    var newPopup = document.createElement("div");
+    newPopup.setAttribute("id", "new-popup");
+    newPopup.setAttribute("class", "event-popup icon pad");
+    newPopup.innerHTML = "<form>\
     <i id='new-cancel-event' class='material-icons' onclick='closeNewPopup()'>close</i>\
     <h3> Create new event </h3>\
     <input type='text' class='new-wide-field' id='new-event-name'\
     placeholder='Event name'>\
     <input type='text' class='new-wide-field' id='new-event-location'\
-    placeholder='Select location on map'>\
+    placeholder='Click on map to set location'>\
     <input type='time' class='new-mid-field' id='new-event-time-start'\
     placeholder='Start'>\
     <input type='time' class='new-mid-field' id='new-event-time-end'\
     placeholder='End'>\
     <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
     </form>"
-  document.body.append(newPopup);
+    document.body.append(newPopup);
   }
 }
 
@@ -80,7 +77,7 @@ function closeFilterPopup() {
 }
 
 function closeListPopup() {
-  if(listPopup = document.getElementById('event-list'))
+  if (listPopup = document.getElementById('event-list'))
     listPopup.remove();
 }
 
@@ -101,13 +98,13 @@ function closeNewPopup() {
 }
 
 function closePopups(excludeMe) {
-  if(excludeMe != "filter")
+  if (excludeMe != "filter")
     closeFilterPopup();
-  if(excludeMe != "event")
+  if (excludeMe != "event")
     closeEventPopup();
-  if(excludeMe != "new")
+  if (excludeMe != "new")
     closeNewPopup();
-  if(excludeMe != "list")
+  if (excludeMe != "list")
     closeListPopup();
 }
 // END OF FUNCTIONS TO CLOSE POPUPS
@@ -140,17 +137,20 @@ function checkInputStatus() {
     status &= 0;
   } else {
     document.getElementById('new-event-name').style.borderColor = 'black';
-  } if (start.length < 1) {
+  }
+  if (start.length < 1) {
     document.getElementById('new-event-time-start').style.borderColor = 'red';
     status &= 0;
   } else {
     document.getElementById('new-event-time-start').style.borderColor = 'black';
-  } if (end.length < 1) {
+  }
+  if (end.length < 1) {
     document.getElementById('new-event-time-end').style.borderColor = 'red';
     status &= 0;
   } else {
     document.getElementById('new-event-time-end').style.borderColor = 'black';
-  } if (!lat || !lng) {
+  }
+  if (!selectLat || !selectLng) {
     //indicate that the location was not selected correctly
   } else {
 
@@ -188,12 +188,11 @@ function newEventCreate() {
     "foodCategories": [],
   }
   localStorage.setItem("localManifest", JSON.stringify(storage));
-
+  addMarker(storage.Events[id]);
+  closePopups("all");
+  filterMarkers();
   //reset selection variables
   selectMarker = null;
   selectLat = null;
   selectLng = null;
-  addMarker(storage.Events[id]);
-  closePopups("all");
-  filterMarkers();
 }

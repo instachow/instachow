@@ -5,6 +5,8 @@ var selectMarker = null;
 var selectLat = null;
 var selectLng = null;
 
+var filterList = "[]"; //must be initialized in this way
+
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {
     lat: 42.057656,
