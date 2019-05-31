@@ -1,5 +1,12 @@
 var markers = [];
 
+var newEventMode = 0;
+var selectMarker = null;
+var selectLat = null;
+var selectLng = null;
+
+var filterList = "[]"; //must be initialized in this way
+
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {
     lat: 42.057656,
@@ -37,8 +44,26 @@ var map = new google.maps.Map(document.getElementById('map'), {
   ]
 });
 
+map.addListener('click', function(e) {
+  if (newEventMode) {
+    selectLat = e.latLng.lat();
+    selectLng = e.latLng.lng();
+    if (!selectMarker) {
+      selectMarker = new google.maps.Marker({
+        position: {
+          lat: selectLat,
+          lng: selectLng
+        },
+        map: map,
+        icon: 'assets/black-pin.png',
+      });
+    } else {
+      selectMarker.setPosition(new google.maps.LatLng(selectLat, selectLng));
+      selectMarker.setMap(map);
+    }
+  }
+})
 
-console.log(eventManifest.Events);
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function (position) {
     var pos = {
@@ -60,8 +85,8 @@ if (navigator.geolocation) {
     map.setZoom(16);
   })
 }
-for (var eventID in eventManifest.Events) {
-  var event = eventManifest.Events[eventID];
+
+function addMarker(event) {
   var marker = new google.maps.Marker({
     position: {
       lat: event.lat,
@@ -69,17 +94,14 @@ for (var eventID in eventManifest.Events) {
     },
     map: map,
     title: event.title,
-    eventID: eventID,
+    //eventID: eventID,
     icon: 'assets/' + event.icon,
     foodCategories: event.foodCategories
   });
 
   marker.addListener('click', function (e) {
     //close old popup if there is one
-    closeFilterPopup();
-    closeEventPopup();
-
-    var event = eventManifest.Events[this.eventID];
+    closePopups();
 
     var title = event.title;
     var startTime = event.startTime;
@@ -94,9 +116,9 @@ for (var eventID in eventManifest.Events) {
     eventPopup.innerHTML += "\
             <i class='material-icons float-right' onclick='closeEventPopup()'>close</i>\
             <h3>" + title + "</h3> \
-            <h4>" + room + "</h4>\
-            <h4> Time: " + startTime + " - " + endTime + "</h4> \
-            <h4>" + food + "</h4> \
+            <p>" + room + "</p>\
+            <p> Time: " + startTime + " - " + endTime + "</p> \
+            <p>" + food + "</p> \
             <p>" + description + "</p> \
             <i class='material-icons float-right'>directions</i>";
     document.body.append(eventPopup);
@@ -126,7 +148,7 @@ for (var eventID in eventManifest.Events) {
     });
   });
   markers.push(marker);
-};
+}
 
 function filterMarkers(){
   for(var i in markers){
@@ -144,3 +166,27 @@ function filterMarkers(){
     }
   }
 }
+
+function hidemarkers() {
+  for (var i in markers) {
+    markers[i].setMap(null);
+  }
+}
+
+function indexMain() {
+  //add every event in the static data
+  for (var eventID in eventManifest.Events) {
+    var event = eventManifest.Events[eventID];
+    addMarker(event);
+  };
+  
+  //add every event in the user date
+  var storage = JSON.parse(localStorage.getItem("localManifest"));
+  if (!storage) storage = JSON.parse("{\"Events\":{}}");
+  for (var eventID in storage.Events) {
+    var event = storage.Events[eventID];
+    addMarker(event);
+  };
+}
+
+indexMain();
