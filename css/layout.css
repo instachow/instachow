@@ -219,6 +219,7 @@ i:hover {
 }
 
 #close-list-icon{
+    background: white;
     position:sticky;
     margin:0;
     top:20px;
