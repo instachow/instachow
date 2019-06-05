@@ -13,6 +13,20 @@ body {
     font-family: 'Petit Formal Script', cursive;
 }
 
+#new-event-time-start:before {
+    content: 'Start Time';
+    margin-right: .6em;
+    color: grey;
+    font-family: sans-serif;
+}
+
+#new-event-time-end:before {
+    content: 'End Time';
+    margin-right: .6em;
+    color: grey;
+    font-family: sans-serif;
+}
+
 h3 {
     font-size: 16pt;
     margin-bottom: 10px;
@@ -48,17 +62,17 @@ p {
 }
 
 .bottom-nav-item {
-    padding:8px;
-    padding-left:4px;
-    padding-bottom:6px; 
-    margin:0 4px;
+    padding: 8px;
+    padding-left: 4px;
+    padding-bottom: 6px;
+    margin: 0 4px;
     border-radius: 3px;
     transition-duration: 0.2s;
 }
 
 .bottom-nav-item:hover {
     /* box-shadow: 0 1px 2px 1px gray; */
-    background:rgb(180, 210, 255);
+    background: rgb(180, 210, 255);
     cursor: pointer;
 }
 
@@ -79,7 +93,7 @@ span {
     box-sizing: border-box;
     border-radius: 8px;
     box-shadow: 0 0 5px 0px gray;
-    overflow:scroll;
+    overflow: scroll;
 }
 
 #filter-popup {
@@ -102,7 +116,7 @@ span {
     padding: 20px;
 }
 
-.margin-pad{
+.margin-pad {
     margin: 20px;
 }
 
@@ -153,15 +167,15 @@ span {
 
 .new-wide-field {
     width: 100%;
-    padding:10px;
-    margin:5px;
+    padding: 10px;
+    margin: 5px;
     border-radius: 3px;
 }
 
 .new-mid-field {
     width: 50%;
-    padding:10px;
-    margin:5px;
+    padding: 10px;
+    margin: 5px;
     border-radius: 3px;
 }
 
@@ -174,7 +188,7 @@ span {
     float: right;
 }
 
-.event-title-list{
+.event-title-list {
     margin-top: 0;
 }
 
@@ -191,10 +205,10 @@ a {
 
 /* icon styles */
 i {
-    padding:6px;
+    padding: 6px;
     border-radius: 50%;
-    margin-top:-2px;
-    margin-right:-2px;
+    margin-top: -2px;
+    margin-right: -2px;
 }
 
 i:hover {
@@ -203,19 +217,19 @@ i:hover {
 }
 
 .bottom-nav i {
-    margin:0;
-    padding:0 4px;
+    margin: 0;
+    padding: 0 4px;
 }
 
 .bottom-nav i:hover {
     background: none;
 }
 
-#close-list-icon{
-    position:sticky;
-    margin:0;
-    top:20px;
-    right:20px;
+#close-list-icon {
+    position: sticky;
+    margin: 0;
+    top: 20px;
+    right: 20px;
 }
 
 .food-type {
@@ -246,19 +260,19 @@ i:hover {
         box-sizing: border-box;
     }
 
-    #filter-popup{
-        text-align:left;
+    #filter-popup {
+        text-align: left;
     }
 }
 
 
 @media screen and (max-width: 360px) {
-    .hide-small{
+    .hide-small {
         display: none;
     }
 
-    #new-event-button{
-        margin:0 6px;
+    #new-event-button {
+        margin: 0 6px;
     }
-  
+
 }

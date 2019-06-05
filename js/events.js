@@ -57,14 +57,18 @@ function openNewPopup() {
     <h3> Create new event </h3>\
     <input type='text' class='new-wide-field' id='new-event-name'\
     placeholder='Event name'>\
-    <input type='text' class='new-wide-field' id='new-event-location'\
-    placeholder='Click on map to set location'>\
     <input type='time' class='new-mid-field' id='new-event-time-start'\
     placeholder='Start'>\
     <input type='time' class='new-mid-field' id='new-event-time-end'\
     placeholder='End'>\
+    <h id='warning'></h>\
+    <input type='text' class='new-wide-field' id='new-event-description'\
+    placeholder='Enter a description'>\
+    <input type='text' class='new-wide-field' id='new-event-room'\
+    placeholder='Room'>\
     <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
-    </form>"
+    </form>\
+    <h id='location-instructions'>Click on Map to set location</h>"
     document.body.append(newPopup);
   }
 }
@@ -130,30 +134,47 @@ function checkInputStatus() {
   var title = document.getElementById('new-event-name').value;
   var start = document.getElementById('new-event-time-start').value;
   var end = document.getElementById('new-event-time-end').value;
-  var icon = '8.png';
+  var icon = 'Eggplant.png';
   var status = 1;
   if (title.length < 1) {
     document.getElementById('new-event-name').style.borderColor = 'red';
     status &= 0;
   } else {
-    document.getElementById('new-event-name').style.borderColor = 'black';
+    document.getElementById('new-event-name').style.borderColor = 'lightgrey';
   }
+
   if (start.length < 1) {
     document.getElementById('new-event-time-start').style.borderColor = 'red';
     status &= 0;
   } else {
-    document.getElementById('new-event-time-start').style.borderColor = 'black';
+    document.getElementById('new-event-time-start').style.borderColor = 'lightgrey';
   }
   if (end.length < 1) {
     document.getElementById('new-event-time-end').style.borderColor = 'red';
     status &= 0;
   } else {
-    document.getElementById('new-event-time-end').style.borderColor = 'black';
+    document.getElementById('new-event-time-end').style.borderColor = 'lightgrey';
+  }
+  if (end <= start) {
+    document.getElementById('new-event-time-start').style.borderColor = 'red';
+    document.getElementById('new-event-time-end').style.borderColor = 'red';
+    status &= 0;
+  } else {
+    document.getElementById('new-event-time-start').style.borderColor = 'lightgrey';
+    document.getElementById('new-event-time-end').style.borderColor = 'lightgrey';
   }
   if (!selectLat || !selectLng) {
+    document.getElementById('location-instructions').style.color = 'red';
+    document.getElementById('location-instructions').style.fontWeight = '900';
+    status &= 0;
+    document.getElementById('warning').innerHTML = 'End cannot be earlier than start';
+    document.getElementById('warning').style.color = 'red';
+    document.getElementById('warning').style.fontWeight = '900';
     //indicate that the location was not selected correctly
   } else {
-
+    document.getElementById('location-instructions').style.color = 'black';
+    document.getElementById('location-instructions').style.fontWeight = 'normal';
+    document.getElementById('warning').innerHTML = '';
   }
   return status;
 }
@@ -174,7 +195,9 @@ function newEventCreate() {
   var title = document.getElementById('new-event-name').value;
   var start = document.getElementById('new-event-time-start').value;
   var end = document.getElementById('new-event-time-end').value;
-  var icon = '8.png';
+  var description = document.getElementById('new-event-description').value;
+  var icon = 'Bagged Lunch.png';
+  var room = document.getElementById('new-event-room').value;
   storage.Events[id] = {
     "title": title,
     "lat": selectLat,
@@ -182,8 +205,8 @@ function newEventCreate() {
     "startTime": start,
     "endTime": end,
     "icon": icon,
-    "description": "unimplemented",
-    "room": "unimplemented",
+    "description": description,
+    "room": room,
     "comments": [],
     "foodCategories": [],
   }
