@@ -64,27 +64,39 @@ map.addListener('click', function(e) {
   }
 })
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function (position) {
-    var pos = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    };
-    var marker = new google.maps.Marker({
-      position: {
-        lat: pos.lat,
-        lng: pos.lng
-      },
-      map: map,
-      title: 'Current location',
-      eventID: -1,
-      icon: 'assets/location.png',
+var marker;
+
+function getMyLocation(){
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      marker = new google.maps.Marker({
+        position: {
+          lat: pos.lat,
+          lng: pos.lng
+        },
+        map: map,
+        title: 'Current location',
+        eventID: -1,
+        icon: 'assets/location2.png',
+      })
     })
-    console.log(marker);
-    map.setCenter(pos);
-    map.setZoom(16);
-  })
+  }
 }
+
+function showMyLocation(){
+  if(marker){
+    map.setZoom(16);
+    map.panTo(marker.position);
+  }
+}
+
+getMyLocation();
+showMyLocation();
+
 
 function addMarker(event) {
   var marker = new google.maps.Marker({

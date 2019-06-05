@@ -8,7 +8,7 @@ var eventManifest = {
             "startTime": "11AM",
             "endTime": "4PM",
             "foodCategories": [" Salad", " Pizza", " Middle-eastern"],
-            "icon": "Chilli.png",
+            "icon": "Chili.png",
             "description": "Falafel, hummus, and more!",
             "comments": []
         },

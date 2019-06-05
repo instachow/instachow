@@ -240,6 +240,11 @@ i:hover {
     right:20px;
 }
 
+#my-location-icon{
+    float: right;
+    margin-top: -8px;
+}
+
 .food-type {
     margin: 5px;
     width: auto;
