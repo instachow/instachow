@@ -12,7 +12,7 @@ function openFilterPopup() {
     filterPopup.setAttribute("class", "event-popup icon pad");
     filterPopup.innerHTML += "\
             <i class='material-icons float-right' onclick='closeFilterPopup()'>close</i>\
-            <h3> Filters </h3>";
+            <h3> What food do you want? </h3>";
     var filters = availableFilters.Filters;
     console.log(filters);
 
@@ -202,8 +202,8 @@ function newEventCreate() {
     "title": title,
     "lat": selectLat,
     "lng": selectLng,
-    "startTime": start,
-    "endTime": end,
+    "startTime": convert(start),
+    "endTime": convert(end),
     "icon": icon,
     "description": description,
     "room": room,
@@ -218,4 +218,9 @@ function newEventCreate() {
   selectMarker = null;
   selectLat = null;
   selectLng = null;
+}
+
+
+function convert(input) {
+  return moment(input, 'HH:mm').format('h:mm A');
 }
