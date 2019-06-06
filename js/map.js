@@ -44,7 +44,7 @@ var map = new google.maps.Map(document.getElementById('map'), {
   ]
 });
 
-map.addListener('click', function(e) {
+map.addListener('click', function (e) {
   if (newEventMode) {
     selectLat = e.latLng.lat();
     selectLng = e.latLng.lng();
@@ -84,6 +84,14 @@ if (navigator.geolocation) {
     map.setCenter(pos);
     map.setZoom(16);
   })
+}
+
+function ReCenter() {
+  map.setZoom(15);
+  map.panTo({
+    lat: 42.057656,
+    lng: -87.67428,
+  });
 }
 
 function addMarker(event) {
@@ -150,11 +158,11 @@ function addMarker(event) {
   markers.push(marker);
 }
 
-function filterMarkers(){
-  for(var i in markers){
+function filterMarkers() {
+  for (var i in markers) {
     let toDisplay = (filterList.length == 2);
-    for(j in markers[i].foodCategories){
-      if (filterList.indexOf(markers[i].foodCategories[j]) > -1){
+    for (j in markers[i].foodCategories) {
+      if (filterList.indexOf(markers[i].foodCategories[j]) > -1) {
         toDisplay = 1;
       }
     }
@@ -179,7 +187,7 @@ function indexMain() {
     var event = eventManifest.Events[eventID];
     addMarker(event);
   };
-  
+
   //add every event in the user date
   var storage = JSON.parse(localStorage.getItem("localManifest"));
   if (!storage) storage = JSON.parse("{\"Events\":{}}");

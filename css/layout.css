@@ -2,12 +2,18 @@ body {
     margin: 0;
     border-radius: 5px;
     font-family: 'Source Sans Pro', sans-serif;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
     supported by Chrome and Opera */
 }
 
@@ -232,12 +238,12 @@ i:hover {
     background: none;
 }
 
-#close-list-icon{
+#close-list-icon {
     background: white;
-    position:sticky;
-    margin:0;
-    top:20px;
-    right:20px;
+    position: sticky;
+    margin: 0;
+    top: 20px;
+    right: 20px;
 }
 
 .food-type {
