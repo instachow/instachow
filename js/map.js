@@ -1,6 +1,4 @@
- 
-var markers = [];
-
+ var markers = [];
 var newEventMode = 0;
 var selectMarker = null;
 var selectLat = null;
@@ -68,7 +66,7 @@ map.addListener('click', function(e) {
 var marker;
 var userPos;
 
-function getMyLocation(){
+function findMyLocation(){
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       pos = {
@@ -97,14 +95,14 @@ function showMyLocation(){
   }
 }
 
-function accessMyLocation(){
+function getMyLocation(){
   if(userPos)
     return userPos;
   else
     return false;
 }
 
-getMyLocation();
+findMyLocation();
 showMyLocation();
 
 

@@ -42,9 +42,9 @@ function buildEventList() {
         event.appendChild(description);
         table.appendChild(event);
 
-        console.log(accessMyLocation());
+        console.log(getMyLocation());
 
-        var userPos = accessMyLocation();
+        var userPos = getMyLocation();
         if(userPos)
             dirURL = "https://www.google.com/maps/dir/?api=1&origin=" + userPos.lat + "%2C+" + userPos.lng + "&destination=" + eventData.lat + "%2C+" + eventData.lng + "&dir_action=navigate";
         else
