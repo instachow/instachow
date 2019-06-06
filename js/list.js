@@ -18,11 +18,16 @@ function buildEventList() {
         title.innerHTML = eventData.title;
         event.appendChild(title);
 
+        var location = document.createElement('h4');
+        location.classList.add('event-start');
+        location.innerHTML = eventData.room;
+        event.appendChild(location);
+
         var time = document.createElement('h4');
         time.classList.add('event-start');
         var st = eventData.startTime;
         var et = eventData.endTime;
-        time.innerHTML = "Time: " + st + " - " + et;
+        time.innerHTML = st + " - " + et;
         event.appendChild(time);
 
         var categories = document.createElement('h4');
@@ -36,7 +41,21 @@ function buildEventList() {
         description.innerHTML = eventData.description;
         event.appendChild(description);
         table.appendChild(event);
-        table.appendChild(document.createElement('hr'));
+
+        console.log(getMyLocation());
+
+        var userPos = getMyLocation();
+        if(userPos)
+            dirURL = "https://www.google.com/maps/dir/?api=1&origin=" + userPos.lat + "%2C+" + userPos.lng + "&destination=" + eventData.lat + "%2C+" + eventData.lng + "&dir_action=navigate";
+        else
+            dirURL = "https://www.google.com/maps/dir/?api=1&destination=" + eventData.lat + "%2C+" + eventData.lng + "&dir_action=navigate";
+        event.innerHTML += "\
+        <a href='" + dirURL + "'> \
+            <span class='big-button list-navigation-button'>\
+                <i class='material-icons'>directions</i> \
+                <span>Navigate</span> \
+            </span>\
+        </a>";
     }
     var table = document.createElement("div");
     table.id = 'event-list';

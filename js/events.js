@@ -12,7 +12,7 @@ function openFilterPopup() {
     filterPopup.setAttribute("class", "event-popup icon pad");
     filterPopup.innerHTML += "\
             <i class='material-icons float-right' onclick='closeFilterPopup()'>close</i>\
-            <h3> What food do you want? </h3>";
+            <h3> What kind of food do you want? </h3>";
     var filters = availableFilters.Filters;
     console.log(filters);
 
@@ -125,6 +125,11 @@ function toggleFilter(food) {
   if (filterToToggle) {
     filterToToggle.classList.toggle("active-filter");
   }
+  let filterLabel = document.getElementById('filter-label');
+  if(currentFilters.length > 0)
+    filterLabel.innerHTML="Filters (" + currentFilters.length + ")";
+  else
+    filterLabel.innerHTML="Filter";
   filterList = JSON.stringify(currentFilters);
   filterMarkers();
 }
