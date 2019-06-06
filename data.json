@@ -25,7 +25,7 @@ var eventManifest = {
             "comments": []
         },
         "2": {
-            "title": "Sigma Fry",
+            "title": "Sigma Fry is the longest event name ever",
             "lat": 42.059031,
             "lng": -87.676087,
             "room": "Sigma Chi lawn",
@@ -33,7 +33,7 @@ var eventManifest = {
             "endTime": "1:00 PM",
             "foodCategories": [" Fast food", " Burgers"],
             "icon": "BBQ.png",
-            "description": "Come for a sizzle!",
+            "description": "Come for a sizzle! We'll have heinous amounts of food for all to enjoy so make sure you come through and bring hungry friends. Come for a sizzle! We'll have heinous amounts of food for all to enjoy so make sure you come through and bring hungry friends.",
             "comments": []
         },
         "3": {

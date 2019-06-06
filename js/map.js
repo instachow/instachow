@@ -1,3 +1,4 @@
+ 
 var markers = [];
 
 var newEventMode = 0;
@@ -65,6 +66,7 @@ map.addListener('click', function(e) {
 })
 
 var marker;
+var userPos;
 
 function getMyLocation(){
   if (navigator.geolocation) {
@@ -73,6 +75,7 @@ function getMyLocation(){
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      userPos = pos;
       marker = new google.maps.Marker({
         position: {
           lat: pos.lat,
@@ -92,6 +95,13 @@ function showMyLocation(){
     map.setZoom(16);
     map.panTo(marker.position);
   }
+}
+
+function accessMyLocation(){
+  if(userPos)
+    return userPos;
+  else
+    return false;
 }
 
 getMyLocation();
@@ -125,14 +135,28 @@ function addMarker(event) {
     var eventPopup = document.createElement("div");
     eventPopup.setAttribute("id", "event-popup");
     eventPopup.setAttribute("class", "event-popup details-popup icon pad");
+    console.log(event.lat);
+    console.log(userPos);
+    if(userPos)
+      dirURL = "https://www.google.com/maps/dir/?api=1&origin=" + userPos.lat + "%2C+" + userPos.lng + "&destination=" + event.lat + "%2C+" + event.lng + "&dir_action=navigate";
+    else
+      dirURL = "https://www.google.com/maps/dir/?api=1&destination=" + event.lat + "%2C+" + event.lng + "&dir_action=navigate";
     eventPopup.innerHTML += "\
-            <i class='material-icons float-right' onclick='closeEventPopup()'>close</i>\
+            <div class='tooltip'> \
+              <i class='material-icons float-right' onclick='closeEventPopup()'>close</i>\
+              <span class='tooltiptext tooltip-left'>Close</span> \
+            </div> \
             <h3>" + title + "</h3> \
             <p>" + room + "</p>\
-            <p> Time: " + startTime + " - " + endTime + "</p> \
+            <p>" + startTime + " - " + endTime + "</p> \
             <p>" + food + "</p> \
             <p>" + description + "</p> \
-            <i class='material-icons float-right'>directions</i>";
+            <a href='" + dirURL + "'> \
+              <span class='big-button'>\
+                <i class='material-icons'>directions</i> \
+                <span>Navigate</span> \
+              </span>\
+            </a>";
     document.body.append(eventPopup);
 
     //resize map and center on the point clicked
