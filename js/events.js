@@ -125,6 +125,11 @@ function toggleFilter(food) {
   if (filterToToggle) {
     filterToToggle.classList.toggle("active-filter");
   }
+  let filterLabel = document.getElementById('filter-label');
+  if(currentFilters.length > 0)
+    filterLabel.innerHTML="Filters (" + currentFilters.length + ")";
+  else
+    filterLabel.innerHTML="Filter";
   filterList = JSON.stringify(currentFilters);
   filterMarkers();
 }

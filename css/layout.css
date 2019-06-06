@@ -87,6 +87,7 @@ p {
     padding: 4px 10px;
     border-radius: 3px;
     margin: 4px 0px;
+    margin-top:14px;
     transition-duration: 0.2s;
     background:lightgray;
 }
@@ -274,7 +275,7 @@ i:hover {
 }
 
 .list-navigation-button{
-
+    
 }
 
 .event-container:hover .list-navigation-button{
