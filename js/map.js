@@ -123,7 +123,9 @@
      title: event.title,
      //eventID: eventID,
      icon: 'assets/' + event.icon,
-     foodCategories: event.foodCategories
+     foodCategories: event.foodCategories,
+     startTime: event.startTime,
+     endTime: event.endTime,
    });
 
    marker.addListener('click', function (e) {
@@ -192,14 +194,24 @@
  }
 
  function filterMarkers() {
+   console.log("CALL FILTER");
    for (var i in markers) {
+    let eTime = document.getElementById('filter-time-end');
+    if (eTime) {
+      eTime = convert12toRaw(eTime.value);
+    } else {
+      eTime = -1;
+    }
      let toDisplay = (filterList.length == 2);
      for (j in markers[i].foodCategories) {
        if (filterList.indexOf(markers[i].foodCategories[j]) > -1) {
          toDisplay = 1;
        }
      }
-     console.log(markers[i].title + ": " + toDisplay);
+     console.log(eTime + "<?" + convert12toRaw(markers[i].endTime));
+     //console.log(markers[i].endTime);
+     toDisplay &= (eTime < convert12toRaw(markers[i].endTime));// || (convert12toRaw(markers[i].startTime) - convert12toRaw(markers[i].endTime) >= 2200 && eTime > convert12toRaw(markers[i].endTime)));
+     //console.log(markers[i].title + ": " + toDisplay);
      if (toDisplay) {
        markers[i].setMap(map);
      } else {
