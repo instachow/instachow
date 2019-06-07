@@ -27,14 +27,12 @@ body {
 }
 
 #new-event-time-start:before {
-    content: 'Start Time';
     margin-right: .6em;
     color: grey;
     font-family: sans-serif;
 }
 
 #new-event-time-end:before {
-    content: 'End Time';
     margin-right: .6em;
     color: grey;
     font-family: sans-serif;
@@ -197,10 +195,19 @@ input{
     border-radius: 3px;
     margin:5px 0;
     outline: none;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 input:focus{
     border-color:black;
+}
+
+input[type=time]::-webkit-inner-spin-button, 
+input[type=time]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 
 .new-wide-field {
