@@ -33,7 +33,7 @@ function openFilterPopup() {
     filterTime.setAttribute('type', 'time');
     if (lastTime) filterTime.value = lastTime;
     var filterTimeD = document.createElement("h3");
-    filterTimeD.innerHTML = "What time do you want to go?";
+    filterTimeD.innerHTML = "Available at:";
     filterPopup.append(filterTimeD);
     filterPopup.append(filterTime);
     document.body.append(filterPopup);
