@@ -102,16 +102,12 @@
      return false;
  }
 
- function ReCenter() {
+ function zoomDefault() {
    map.setZoom(15);
-   map.panTo({
-     lat: 42.057656,
-     lng: -87.67428,
-   });
  }
+
  findMyLocation();
  showMyLocation();
-
 
  function addMarker(event) {
    var marker = new google.maps.Marker({

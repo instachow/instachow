@@ -54,15 +54,19 @@ function openNewPopup() {
     newPopup.innerHTML = "<form>\
     <i id='new-cancel-event' class='material-icons' onclick='closeNewPopup()'>close</i>\
     <h3> Create new event </h3>\
+    <p> Event Name </p> \
     <input type='text' class='new-wide-field' id='new-event-name'\
-    placeholder='Event name'>\
-    <input type='time' class='new-mid-field' id='new-event-time-start'\
-    placeholder='Start'>\
-    <input type='time' class='new-mid-field' id='new-event-time-end'\
-    placeholder='End'>\
+    placeholder='The Last Supper'>\
+    <span style='display:inline;'>\
+      <p> Start Time </p> \
+      <input type='time' class='new-mid-field' id='new-event-time-start'>\
+      <p> End Time </p> \
+      <input type='time' class='new-mid-field' id='new-event-time-end'>\
+    </span>\
     <h id='warning'></h>\
+    <p> Event Description </p> \
     <input type='text' class='new-wide-field' id='new-event-description'\
-    placeholder='Enter a description'>\
+    placeholder='We'll have a sick cornucopia and artists present!'>\
     <select name='icon' id='new-event-icon'>\
     <option selected hidden>Choose an icon</option>\
     <option value='Avocado'>Avocado</option>\
@@ -99,6 +103,11 @@ function openNewPopup() {
     <h id='location-instructions'>Click on Map to set location</h>"
     document.body.append(newPopup);
   }
+}
+
+var currentTime =  function() {
+  var date = new Date();
+  return date.getHours() + ':' + date.getMinutes();
 }
 
 function openEventPopup(e) {
@@ -179,7 +188,7 @@ function closeListPopup() {
 function closeEventPopup() {
   if (eventPopup = document.getElementById('event-popup')) {
     eventPopup.remove();
-    ReCenter();
+    zoomDefault();
   }
 }
 
@@ -291,13 +300,14 @@ function newEventCreate() {
   if (!checkInputStatus()) return;
   var storage = JSON.parse(localStorage.getItem("localManifest"));
   if (!storage) storage = JSON.parse("{\"Events\":{}}");
-  var id = 0;
+  id = 0;
   for (var eventID in eventManifest.Events) {
     id++;
   }
   for (var eventID in storage.Events) {
     id++;
   }
+  console.log("originalId: " + id);
   //TODO: add data validation
   var title = document.getElementById('new-event-name').value;
   var start = document.getElementById('new-event-time-start').value;
