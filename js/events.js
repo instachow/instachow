@@ -369,5 +369,5 @@ function convert24to12(input) {
 }
 
 function convert12toRaw(input) {
-  return parseInt(moment(input, "h:mm A").format('HHMM'));
+  return parseInt(moment(input, "h:mm A").format('HHmm'));
 }
