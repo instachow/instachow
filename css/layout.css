@@ -133,6 +133,10 @@ span {
     bottom: 66px;
 }
 
+#filter-title{
+    padding-left:40px;
+}
+
 #filter-popup h4:hover {
     cursor: pointer;
 }
@@ -313,7 +317,7 @@ i:hover {
 @media screen and (min-width: 800px) {
     .event-popup {
         height: auto;
-        display: inherit;
+        display: table;
         max-height: calc(100% - 132px);
         width: 400px;
         background: white;
@@ -327,8 +331,13 @@ i:hover {
         text-align: left;
     }
 
+    #filter-title{
+        padding-left:0px;
+    }
+
     #new-popup{
         max-height: none;
+        display:inherit;
     }
 
 }
@@ -437,6 +446,7 @@ textarea{
 }
 
 select {
+    min-width: 130px;
     -webkit-appearance: none;
     width:auto;
     background: url(../assets/dropdown-arrow.png) no-repeat right;

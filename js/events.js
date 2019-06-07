@@ -9,11 +9,10 @@ function openFilterPopup() {
   } else {
     var filterPopup = document.createElement("div");
     filterPopup.setAttribute("id", "filter-popup");
-    filterPopup.setAttribute("class", "event-popup icon");
-    filterPopup.style.paddingBottom = "10px";
+    filterPopup.setAttribute("class", "event-popup icon pad");
     filterPopup.innerHTML += "\
-            <i class='material-icons sticky-close-icon float-right' onclick='closeFilterPopup()'>close</i>\
-            <h3 style='padding-left: 40px;'> Food type </h3>";
+            <i style='top:0px;right:0px;' class='material-icons sticky-close-icon float-right' onclick='closeFilterPopup()'>close</i>\
+            <h3 id='filter-title' style='margin-top:0;'> Food type </h3>";
     var filters = availableFilters.Filters;
 
     for (food in filters) {
