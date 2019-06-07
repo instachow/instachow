@@ -109,7 +109,7 @@ span {
 
 .event-popup {
     height: auto;
-    display: table;
+    display: inherit;
     width: calc(100% - 12px);
     max-height: calc(100% - 132px);
     background: white;
@@ -122,11 +122,19 @@ span {
     overflow: scroll;
 }
 
+#new-popup{
+    max-height: 40%;
+}
+
 #filter-popup {
     text-align: center;
     position: fixed;
     left: 6px;
     bottom: 66px;
+}
+
+#filter-title{
+    padding-left:40px;
 }
 
 #filter-popup h4:hover {
@@ -216,21 +224,17 @@ input[type=time]::-webkit-outer-spin-button {
 }
 
 .new-wide-field {
-    width: 100%;
+    width: 98%;
 }
 
 .new-mid-field {
-    width: 80px;
+    width: 84px;
+    text-align: center;
     display:inline;
-    margin:5px 8px;
 }
 
 #new-create-event {
-    background-color: green;
-    float: right;
-}
-
-#new-cancel-event {
+    background-color: lightgreen;
     float: right;
 }
 
@@ -271,12 +275,13 @@ i:hover {
     background: none;
 }
 
-#close-list-icon {
+.sticky-close-icon {
     background: white;
     position: sticky;
     margin: 0;
     top: 20px;
     right: 20px;
+    z-index:10;
 }
 
 #my-location-icon{
@@ -299,10 +304,6 @@ i:hover {
     cursor: pointer;
 }
 
-.list-navigation-button{
-    
-}
-
 .event-container:hover .list-navigation-button{
     opacity:1;
     box-shadow: 0 0px 3px 1px gray;
@@ -316,6 +317,7 @@ i:hover {
 @media screen and (min-width: 800px) {
     .event-popup {
         height: auto;
+        display: table;
         max-height: calc(100% - 132px);
         width: 400px;
         background: white;
@@ -328,6 +330,16 @@ i:hover {
     #filter-popup {
         text-align: left;
     }
+
+    #filter-title{
+        padding-left:0px;
+    }
+
+    #new-popup{
+        max-height: none;
+        display:inherit;
+    }
+
 }
 .tooltip {
     position: relative;
@@ -417,6 +429,34 @@ i:hover {
     border-color: transparent transparent transparent #555;
 }
 
+p span {
+    vertical-align: 0;
+}
+
+textarea{
+    resize: none;
+    border:2px solid lightgray;
+    padding: 10px;
+    border-radius: 3px;
+    width:100%;
+    margin:5px 0;
+    outline: none;
+    
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+select {
+    min-width: 130px;
+    -webkit-appearance: none;
+    width:auto;
+    background: url(../assets/dropdown-arrow.png) no-repeat right;
+    border:2px solid lightgray;
+    padding: 10px;
+    border-radius: 3px;
+    margin:5px 0;
+    outline: none;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
 
 @media screen and (max-width: 360px) {
     .hide-small {

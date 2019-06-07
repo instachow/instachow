@@ -11,8 +11,8 @@ function openFilterPopup() {
     filterPopup.setAttribute("id", "filter-popup");
     filterPopup.setAttribute("class", "event-popup icon pad");
     filterPopup.innerHTML += "\
-            <i class='material-icons float-right' onclick='closeFilterPopup()'>close</i>\
-            <h3> Food type: </h3>";
+            <i style='top:0px;right:0px;' class='material-icons sticky-close-icon float-right' onclick='closeFilterPopup()'>close</i>\
+            <h3 id='filter-title' style='margin-top:0;'> Food type </h3>";
     var filters = availableFilters.Filters;
 
     for (food in filters) {
@@ -27,6 +27,7 @@ function openFilterPopup() {
       filterPopup.append(filterItem);
     }
     var filterTime = document.createElement("input");
+    filterTime.classList.add('new-mid-field');
     filterTime.setAttribute('id', 'filter-time-end');
     filterTime.setAttribute('onkeyup', 'filterMarkers()');
     filterTime.setAttribute('oninput', 'filterMarkers()');
@@ -60,61 +61,74 @@ function openNewPopup() {
     newEventMode = 1;
     var date = new Date();
     var currentTime = date.toTimeString().substring(0,5);
+    date.setTime(date.getTime() + (1*60*60*1000));
+    var currentTime2 = date.toTimeString().substring(0,5);
+    console.log(currentTime2);
     var newPopup = document.createElement("div");
     newPopup.setAttribute("id", "new-popup");
-    newPopup.setAttribute("class", "event-popup icon pad");
-    newPopup.innerHTML = "<form>\
-    <i id='new-cancel-event' class='material-icons' onclick='closeNewPopup()'>close</i>\
-    <h3> Create new event </h3>\
-    <p> Event Name </p> \
-    <input type='text' class='new-wide-field' id='new-event-name'\
-    placeholder='The Last Supper'> \
-    <span style='min-width:50%; margin-top:10px;'>\
-      <p style='display:inline;'> Start Time </p> \
-      <input type='time' class='new-mid-field' id='new-event-time-start' value=" + currentTime + ">\
-    </span>\
-    <span>\
-      <p style='display:inline;'> End Time </p> \
-      <input type='time' class='new-mid-field' id='new-event-time-end'>\
-    </span>\
-    <h id='warning'></h>\
-    <p> Event Description </p> \
-    <input type='text' class='new-wide-field' id='new-event-description'\
-    placeholder='We&#39;ll have a sick cornucopia and artists in attendance!'>\
-    <select name='icon' id='new-event-icon'>\
-    <option selected hidden>Choose an icon</option>\
-    <option value='Avocado'>Avocado</option>\
-    <option value='Bagged Lunch'>Bagged Lunch</option>\
-    <option value='BBQ'>BBQ</option>\
-    <option value='Burrito'>Burrito</option>\
-    <option value='Cherry'>Cherry</option>\
-    <option value='Chicken'>Chicken</option>\
-    <option value='Chilli'>Chilli</option>\
-    <option value='Corn'>Corn</option>\
-    <option value='Crossiant'>Crossiant</option>\
-    <option value='Donut'>Donut</option>\
-    <option value='Eggplant'>Eggplant</option>\
-    <option value='Orange'>Orange</option>\
-    <option value='Pizza'>Pizza</option>\
-    <option value='Sausage'>Sausage</option>\
-    <option value='Steak'>Steak</option>\
-    <option value='Watermelon'>Watermelon</option>\
-    </select>\
-    <select name='filters[]' multiple='multiple' size='5' id='select-meal-type'>\
-    <option value=' Fish'>Fish</option>\
-    <option value=' Crustaceans'>Crustaceans</option>\
-    <option value=' Smoothies'>Smoothies</option>\
-    <option value=' Cupcakes'>Cupcakes</option>\
-    <option value=' Fast food'>Fast food</option>\
-    <option value=' Burgers'>Burgers</option>\
-    <option value=' Pizza'>Pizza</option>\
-    <option value=' Asian'>Asian</option>\
-    </select>\
-    <input type='text' class='new-wide-field' id='new-event-room'\
-    placeholder='Room'>\
-    <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
-    </form>\
-    <h id='location-instructions'>Click on Map to set location</h>"
+    newPopup.setAttribute("class", "event-popup new-event-popup icon");
+    newPopup.innerHTML = "\
+    <i id='new-cancel-event' class='material-icons float-right sticky-close-icon' onclick='closeNewPopup()'>close</i>\
+    <h3 style='background:white; top:0px; left:20px; position:sticky;padding-bottom:10px;' class='pad event-title-list'> Create new event </h3>\
+    <div class='pad' style='padding-top:0;'>\
+      <form>\
+      <p> Event Name </p>\
+      <input type='text' class='new-wide-field' id='new-event-name'\
+      placeholder='The Last Supper'> \
+      <div style='min-width:50%; margin-top:10px;'>\
+        <p> Start <span class='hide-small'>Time</span>: </p> \
+        <input type='time' class='new-mid-field' id='new-event-time-start' value=" + currentTime + ">\
+      </div>\
+      <div>\
+        <p> End <span class='hide-small'>Time</span>: </p> \
+        <input type='time' class='new-mid-field' id='new-event-time-end' value=" + currentTime2 + ">\
+      </div>\
+      <h id='warning'></h>\
+      <p> Event Description </p> \
+      <textarea class='new-wide-field' id='new-event-description'\
+      placeholder='We&#39;ll have a sick cornucopia and artists in attendance!'></textarea>\
+      <div style='min-width:50%; margin-top:10px;'>\
+      <p> Icon: </p>\
+        <select name='icon' id='new-event-icon'>\
+          <option selected value='Avocado'>Avocado</option>\
+          <option value='Bagged Lunch'>Bagged Lunch</option>\
+          <option value='BBQ'>BBQ</option>\
+          <option value='Burrito'>Burrito</option>\
+          <option value='Cherry'>Cherry</option>\
+          <option value='Chicken'>Chicken</option>\
+          <option value='Chilli'>Chilli</option>\
+          <option value='Corn'>Corn</option>\
+          <option value='Crossiant'>Crossiant</option>\
+          <option value='Donut'>Donut</option>\
+          <option value='Eggplant'>Eggplant</option>\
+          <option value='Orange'>Orange</option>\
+          <option value='Pizza'>Pizza</option>\
+          <option value='Sausage'>Sausage</option>\
+          <option value='Steak'>Steak</option>\
+          <option value='Watermelon'>Watermelon</option>\
+        </select>\
+      </div>\
+      <div> \
+      <p> Food Type: </p>\
+        <select name='filters[]' id='select-meal-type'>\
+          <option value=' Fish'>Fish</option>\
+          <option value=' Crustaceans'>Crustaceans</option>\
+          <option value=' Smoothies'>Smoothies</option>\
+          <option value=' Cupcakes'>Cupcakes</option>\
+          <option value=' Fast food'>Fast food</option>\
+          <option value=' Burgers'>Burgers</option>\
+          <option value=' Pizza'>Pizza</option>\
+          <option value=' Asian'>Asian</option>\
+        </select>\
+      </div>\
+      <p> Room Number </p> \
+      <input type='text' class='new-wide-field' id='new-event-room'\
+      placeholder='Elder 326'>\
+      <br><br>\
+      <p id='location-instructions'>Click on Map to set location</> \
+      <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
+      </form>\
+    </div>"
     document.body.append(newPopup);
   }
 }
