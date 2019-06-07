@@ -113,7 +113,7 @@
  showMyLocation();
 
 
- function addMarker(event) {
+ function addMarker(event, eid) {
    var marker = new google.maps.Marker({
      position: {
        lat: event.lat,
@@ -126,6 +126,7 @@
      foodCategories: event.foodCategories,
      startTime: event.startTime,
      endTime: event.endTime,
+     id: eid
    });
 
    marker.addListener('click', function (e) {
@@ -194,11 +195,12 @@
  }
 
  function filterMarkers() {
-   console.log("CALL FILTER");
+   //console.log("CALL FILTER");
    for (var i in markers) {
     let eTime = document.getElementById('filter-time-end');
     if (eTime) {
       eTime = convert12toRaw(eTime.value);
+      if (!eTime) eTime = -1;
     } else {
       eTime = -1;
     }
@@ -230,7 +232,7 @@
    //add every event in the static data
    for (var eventID in eventManifest.Events) {
      var event = eventManifest.Events[eventID];
-     addMarker(event);
+     addMarker(event, eventID);
    };
 
    //add every event in the user date
@@ -238,7 +240,7 @@
    if (!storage) storage = JSON.parse("{\"Events\":{}}");
    for (var eventID in storage.Events) {
      var event = storage.Events[eventID];
-     addMarker(event);
+     addMarker(event, eventID);
    };
  }
 
