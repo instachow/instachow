@@ -284,22 +284,22 @@ function checkInputStatus() {
     document.getElementById('new-event-time-start').style.borderColor = 'red';
     document.getElementById('new-event-time-end').style.borderColor = 'red';
     status &= 0;
+    document.getElementById('warning').innerHTML = 'End cannot be earlier than start';
+    document.getElementById('warning').style.color = 'red';
+    document.getElementById('warning').style.fontWeight = '900';
   } else {
     document.getElementById('new-event-time-start').style.borderColor = 'lightgrey';
     document.getElementById('new-event-time-end').style.borderColor = 'lightgrey';
+    document.getElementById('warning').innerHTML = '';
   }
   if (!selectLat || !selectLng) {
     document.getElementById('location-instructions').style.color = 'red';
     document.getElementById('location-instructions').style.fontWeight = '900';
     status &= 0;
-    document.getElementById('warning').innerHTML = 'End cannot be earlier than start';
-    document.getElementById('warning').style.color = 'red';
-    document.getElementById('warning').style.fontWeight = '900';
     //indicate that the location was not selected correctly
   } else {
     document.getElementById('location-instructions').style.color = 'black';
     document.getElementById('location-instructions').style.fontWeight = 'normal';
-    document.getElementById('warning').innerHTML = '';
   }
   return status;
 }
@@ -307,6 +307,7 @@ function checkInputStatus() {
 function newEventCreate() {
   checkInputMode = true;
   if (!checkInputStatus()) return;
+  checkInputMode = false;
   var storage = JSON.parse(localStorage.getItem("localManifest"));
   if (!storage) storage = JSON.parse("{\"Events\":{}}");
   id = 0;
