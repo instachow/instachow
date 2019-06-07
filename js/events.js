@@ -71,7 +71,7 @@ function openNewPopup() {
     <h id='warning'></h>\
     <p> Event Description </p> \
     <input type='text' class='new-wide-field' id='new-event-description'\
-    placeholder='We'll have a sick cornucopia and artists present!'>\
+    placeholder='We&#39;ll have a sick cornucopia and artists in attendance!'>\
     <select name='icon' id='new-event-icon'>\
     <option selected hidden>Choose an icon</option>\
     <option value='Avocado'>Avocado</option>\
