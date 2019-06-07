@@ -196,9 +196,11 @@
    for (var i in markers) {
     let eTime = document.getElementById('filter-time-end');
     if (eTime) {
+      lastTime = eTime.value;
       eTime = convert12toRaw(eTime.value);
       if (!eTime) eTime = -1;
     } else {
+      lastTime = "";
       eTime = -1;
     }
      let toDisplay = (filterList.length == 2);
@@ -209,7 +211,7 @@
      }
      console.log(eTime + "<?" + convert12toRaw(markers[i].endTime));
      //console.log(markers[i].endTime);
-     toDisplay &= (eTime < convert12toRaw(markers[i].endTime));// || (convert12toRaw(markers[i].startTime) - convert12toRaw(markers[i].endTime) >= 2200 && eTime > convert12toRaw(markers[i].endTime)));
+     toDisplay &= eTime == -1 || (eTime < convert12toRaw(markers[i].endTime) && convert12toRaw(markers[i].startTime) < eTime) || (convert12toRaw(markers[i].startTime) - convert12toRaw(markers[i].endTime) >= 2200 && (eTime > convert12toRaw(markers[i].startTime || eTime < convert12toRaw(markers[i].endTime))));
      //console.log(markers[i].title + ": " + toDisplay);
      if (toDisplay) {
        markers[i].setMap(map);

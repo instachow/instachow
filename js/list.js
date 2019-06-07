@@ -1,5 +1,7 @@
 var listOfEvents = eventManifest.Events;
 
+var lastTime = null;
+
 function eventPopupTrigger(x) {
     console.log("AAA");
     for (let i in markers) {
@@ -21,7 +23,14 @@ function buildEventList() {
         var event = document.createElement('div');
         event.classList.add('event-container');
         event.classList.add('pad');
-        event.setAttribute('onclick', "google.maps.event.trigger(markers["+ eid +"], 'click')");
+        event.onclick = function () {
+            console.log("AAA");
+            for (let i in markers) {
+                if (markers[i].id == eid) {
+                    google.maps.event.trigger(markers[i], 'click');
+                }
+            }
+        };
 
         var title = document.createElement('h3');
         title.classList.add('event-title-list');

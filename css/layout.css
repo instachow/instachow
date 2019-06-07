@@ -133,6 +133,11 @@ span {
     cursor: pointer;
 }
 
+#filter-time-end {
+    width: 8em;
+    font-size: 20px
+}
+
 .active-filter {
     background-color: green !important;
     color: white;
