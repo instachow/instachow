@@ -47,6 +47,7 @@
    if (newEventMode) {
      selectLat = e.latLng.lat();
      selectLng = e.latLng.lng();
+     checkInputStatus();
      if (!selectMarker) {
        selectMarker = new google.maps.Marker({
          position: {

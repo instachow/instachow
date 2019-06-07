@@ -73,15 +73,15 @@ function openNewPopup() {
     <div class='pad' style='padding-top:0;'>\
       <form>\
       <p> Event Name </p>\
-      <input type='text' class='new-wide-field' id='new-event-name'\
+      <input oninput='checkInputStatus()' type='text' class='new-wide-field' id='new-event-name'\
       placeholder='The Last Supper'> \
       <div style='min-width:50%; margin-top:10px;'>\
         <p> Start <span class='hide-small'>Time</span>: </p> \
-        <input type='time' class='new-mid-field' id='new-event-time-start' value=" + currentTime + ">\
+        <input oninput='checkInputStatus()' type='time' class='new-mid-field' id='new-event-time-start' value=" + currentTime + ">\
       </div>\
       <div>\
         <p> End <span class='hide-small'>Time</span>: </p> \
-        <input type='time' class='new-mid-field' id='new-event-time-end' value=" + currentTime2 + ">\
+        <input oninput='checkInputStatus()' type='time' class='new-mid-field' id='new-event-time-end' value=" + currentTime2 + ">\
       </div>\
       <h id='warning'></h>\
       <p> Event Description </p> \
@@ -122,7 +122,7 @@ function openNewPopup() {
         </select>\
       </div>\
       <p> Room Number </p> \
-      <input type='text' class='new-wide-field' id='new-event-room'\
+      <input oninput='checkInputStatus()' type='text' class='new-wide-field' id='new-event-room'\
       placeholder='Elder 326'>\
       <br><br>\
       <p id='location-instructions'>Click on Map to set location</> \

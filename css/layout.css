@@ -228,7 +228,7 @@ input[type=time]::-webkit-outer-spin-button {
 }
 
 .new-mid-field {
-    width: 84px;
+    width: 8em;
     text-align: center;
     display:inline;
 }
