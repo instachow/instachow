@@ -9,9 +9,10 @@ function openFilterPopup() {
   } else {
     var filterPopup = document.createElement("div");
     filterPopup.setAttribute("id", "filter-popup");
-    filterPopup.setAttribute("class", "event-popup icon pad");
+    filterPopup.setAttribute("class", "event-popup icon");
+    filterPopup.style.paddingBottom = "10px";
     filterPopup.innerHTML += "\
-            <i class='material-icons float-right' onclick='closeFilterPopup()'>close</i>\
+            <i class='material-icons sticky-close-icon float-right' onclick='closeFilterPopup()'>close</i>\
             <h3 style='padding-left: 40px;'> Food type </h3>";
     var filters = availableFilters.Filters;
 
@@ -34,7 +35,7 @@ function openFilterPopup() {
     filterTime.setAttribute('type', 'time');
     if (lastTime) filterTime.value = lastTime;
     var filterTimeD = document.createElement("h3");
-    filterTimeD.innerHTML = "What time do you want to go?";
+    filterTimeD.innerHTML = "Ends after";
     filterPopup.append(filterTimeD);
     filterPopup.append(filterTime);
     document.body.append(filterPopup);
