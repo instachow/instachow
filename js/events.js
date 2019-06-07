@@ -30,6 +30,9 @@ function openFilterPopup() {
     filterTime.setAttribute('id', 'filter-time-end');
     filterTime.setAttribute('onkeyup', 'filterMarkers()');
     filterTime.setAttribute('type', 'time');
+    var filterTimeD = document.createElement("h3");
+    filterTimeD.innerHTML = "What time do you want to go?";
+    filterPopup.append(filterTimeD);
     filterPopup.append(filterTime);
     document.body.append(filterPopup);
   }
