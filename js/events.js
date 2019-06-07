@@ -64,6 +64,25 @@ function openNewPopup() {
     <h id='warning'></h>\
     <input type='text' class='new-wide-field' id='new-event-description'\
     placeholder='Enter a description'>\
+    <select name='icon' id='new-event-icon'>\
+    <option selected hidden>Choose an icon</option>\
+    <option value='Avocado'>Avocado</option>\
+    <option value='Bagged Lunch'>Bagged Lunch</option>\
+    <option value='BBQ'>BBQ</option>\
+    <option value='Burrito'>Burrito</option>\
+    <option value='Cherry'>Cherry</option>\
+    <option value='Chicken'>Chicken</option>\
+    <option value='Chilli'>Chilli</option>\
+    <option value='Corn'>Corn</option>\
+    <option value='Crossiant'>Crossiant</option>\
+    <option value='Donut'>Donut</option>\
+    <option value='Eggplant'>Eggplant</option>\
+    <option value='Orange'>Orange</option>\
+    <option value='Pizza'>Pizza</option>\
+    <option value='Sausage'>Sausage</option>\
+    <option value='Steak'>Steak</option>\
+    <option value='Watermelon'>Watermelon</option>\
+    </select>\
     <input type='text' class='new-wide-field' id='new-event-room'\
     placeholder='Room'>\
     <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
@@ -72,6 +91,69 @@ function openNewPopup() {
     document.body.append(newPopup);
   }
 }
+
+function openEventPopup(e) {
+  //close old popup if there is one
+  closePopups();
+
+  var title = event.title;
+  var startTime = event.startTime;
+  var endTime = event.endTime;
+  var description = event.description;
+  var food = event.foodCategories;
+  var room = event.room;
+
+  var eventPopup = document.createElement("div");
+  eventPopup.setAttribute("id", "event-popup");
+  eventPopup.setAttribute("class", "event-popup details-popup icon pad");
+  console.log(event.lat);
+  console.log(userPos);
+  if (userPos)
+    dirURL = "https://www.google.com/maps/dir/?api=1&origin=" + userPos.lat + "%2C+" + userPos.lng + "&destination=" + event.lat + "%2C+" + event.lng + "&dir_action=navigate";
+  else
+    dirURL = "https://www.google.com/maps/dir/?api=1&destination=" + event.lat + "%2C+" + event.lng + "&dir_action=navigate";
+  eventPopup.innerHTML += "\
+         <div class='tooltip'> \
+           <i class='material-icons float-right' onclick='closeEventPopup()'>close</i>\
+           <span class='tooltiptext tooltip-left'>Close</span> \
+         </div> \
+         <h3>" + title + "</h3> \
+         <p>" + room + "</p>\
+         <p>" + startTime + " - " + endTime + "</p> \
+         <p>" + food + "</p> \
+         <p>" + description + "</p> \
+         <a href='" + dirURL + "'> \
+           <span class='big-button'>\
+             <i class='material-icons'>directions</i> \
+             <span>Navigate</span> \
+           </span>\
+         </a>";
+  document.body.append(eventPopup);
+
+  //resize map and center on the point clicked
+  //account for popup on left side
+  lat = event.lat;
+  lng = event.lng;
+  if (window.innerWidth > 799) {
+    if (lng > 0)
+      lng = event.lng + 0.004;
+    else
+      lng = event.lng - 0.004;
+  }
+  //account for popup on bottom
+  else {
+    if (lat > 0)
+      lat = event.lat - 0.002;
+    else
+      lat = event.lat + 0.002;
+  }
+
+  map.setZoom(16);
+  map.panTo({
+    lat,
+    lng
+  });
+};
 
 // START OF FUNCTIONS TO CLOSE POPUPS
 function closeFilterPopup() {
@@ -88,6 +170,7 @@ function closeListPopup() {
 function closeEventPopup() {
   if (eventPopup = document.getElementById('event-popup')) {
     eventPopup.remove();
+    ReCenter();
   }
 }
 
@@ -126,10 +209,10 @@ function toggleFilter(food) {
     filterToToggle.classList.toggle("active-filter");
   }
   let filterLabel = document.getElementById('filter-label');
-  if(currentFilters.length > 0)
-    filterLabel.innerHTML="Filters (" + currentFilters.length + ")";
+  if (currentFilters.length > 0)
+    filterLabel.innerHTML = "Filters (" + currentFilters.length + ")";
   else
-    filterLabel.innerHTML="Filter";
+    filterLabel.innerHTML = "Filter";
   filterList = JSON.stringify(currentFilters);
   filterMarkers();
 }
@@ -139,8 +222,18 @@ function checkInputStatus() {
   var title = document.getElementById('new-event-name').value;
   var start = document.getElementById('new-event-time-start').value;
   var end = document.getElementById('new-event-time-end').value;
-  var icon = 'Eggplant.png';
+  var icon = document.getElementById('new-event-icon').value + ".png";
+  console.log(icon);
+
+
   var status = 1;
+
+  if (icon == "Choose an icon.png") {
+    document.getElementById('new-event-icon').style.borderColor = 'red';
+    status &= 0;
+  } else {
+    document.getElementById('new-event-icon').style.borderColor = 'lightgrey';
+  }
   if (title.length < 1) {
     document.getElementById('new-event-name').style.borderColor = 'red';
     status &= 0;
@@ -201,7 +294,7 @@ function newEventCreate() {
   var start = document.getElementById('new-event-time-start').value;
   var end = document.getElementById('new-event-time-end').value;
   var description = document.getElementById('new-event-description').value;
-  var icon = 'Bagged Lunch.png';
+  var icon = document.getElementById('new-event-icon').value + ".png";
   var room = document.getElementById('new-event-room').value;
   storage.Events[id] = {
     "title": title,

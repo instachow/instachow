@@ -3,12 +3,12 @@ var listOfEvents = eventManifest.Events;
 function buildEventList() {
     function renderEvent(eventData) {
         let toDisplay = (filterList.length == 2);
-        for(j in eventData.foodCategories){
-            if (filterList.indexOf(eventData.foodCategories[j]) > -1){
+        for (j in eventData.foodCategories) {
+            if (filterList.indexOf(eventData.foodCategories[j]) > -1) {
                 toDisplay = 1;
             }
         }
-        if (!toDisplay) return; 
+        if (!toDisplay) return;
         var event = document.createElement('div');
         event.classList.add('event-container');
         event.classList.add('pad');
@@ -35,6 +35,7 @@ function buildEventList() {
         var cat = eventData.foodCategories;
         categories.innerHTML = cat;
         event.appendChild(categories);
+        event.onclick = 'console.log("click")';
 
         var description = document.createElement('p');
         description.classList.add('event-description');
@@ -45,7 +46,7 @@ function buildEventList() {
         console.log(getMyLocation());
 
         var userPos = getMyLocation();
-        if(userPos)
+        if (userPos)
             dirURL = "https://www.google.com/maps/dir/?api=1&origin=" + userPos.lat + "%2C+" + userPos.lng + "&destination=" + eventData.lat + "%2C+" + eventData.lng + "&dir_action=navigate";
         else
             dirURL = "https://www.google.com/maps/dir/?api=1&destination=" + eventData.lat + "%2C+" + eventData.lng + "&dir_action=navigate";
