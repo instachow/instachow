@@ -311,8 +311,8 @@ function newEventCreate() {
     "title": title,
     "lat": selectLat,
     "lng": selectLng,
-    "startTime": convert(start),
-    "endTime": convert(end),
+    "startTime": convert24to12(start),
+    "endTime": convert24to12(end),
     "icon": icon,
     "description": description,
     "room": room,
@@ -330,6 +330,10 @@ function newEventCreate() {
 }
 
 
-function convert(input) {
+function convert24to12(input) {
   return moment(input, 'HH:mm').format('h:mm A');
+}
+
+function convert12toRaw(input) {
+  return moment(input, "h:mm A").format('HHMM')
 }
