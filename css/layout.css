@@ -91,6 +91,7 @@ p {
 
 .big-button {
     padding: 4px 10px;
+    padding-right:16px;
     border-radius: 3px;
     margin: 4px 0px;
     margin-top:14px;
@@ -179,7 +180,7 @@ span {
 
 }
 
-#new-popup {}
+
 
 .new-form {
     width: 90%;
@@ -312,7 +313,6 @@ i:hover {
 }
 .tooltip {
     position: relative;
-    display: inline-block;
     float:right;
 }
 
