@@ -29,7 +29,9 @@ function openFilterPopup() {
     var filterTime = document.createElement("input");
     filterTime.setAttribute('id', 'filter-time-end');
     filterTime.setAttribute('onkeyup', 'filterMarkers()');
+    filterTime.setAttribute('oninput', 'filterMarkers()');
     filterTime.setAttribute('type', 'time');
+    if (lastTime) filterTime.value = lastTime;
     var filterTimeD = document.createElement("h3");
     filterTimeD.innerHTML = "What time do you want to go?";
     filterPopup.append(filterTimeD);

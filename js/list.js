@@ -1,6 +1,6 @@
 var listOfEvents = eventManifest.Events;
 
-
+var lastTime = null;
 
 function eventPopupTrigger(x) {
     console.log("AAA");
