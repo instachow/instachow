@@ -109,7 +109,8 @@
  findMyLocation();
  showMyLocation();
 
- function addMarker(event) {
+
+ function addMarker(event, eid) {
    var marker = new google.maps.Marker({
      position: {
        lat: event.lat,
@@ -119,7 +120,10 @@
      title: event.title,
      //eventID: eventID,
      icon: 'assets/' + event.icon,
-     foodCategories: event.foodCategories
+     foodCategories: event.foodCategories,
+     startTime: event.startTime,
+     endTime: event.endTime,
+     id: eid
    });
 
    marker.addListener('click', function (e) {
@@ -188,14 +192,25 @@
  }
 
  function filterMarkers() {
+   //console.log("CALL FILTER");
    for (var i in markers) {
+    let eTime = document.getElementById('filter-time-end');
+    if (eTime) {
+      eTime = convert12toRaw(eTime.value);
+      if (!eTime) eTime = -1;
+    } else {
+      eTime = -1;
+    }
      let toDisplay = (filterList.length == 2);
      for (j in markers[i].foodCategories) {
        if (filterList.indexOf(markers[i].foodCategories[j]) > -1) {
          toDisplay = 1;
        }
      }
-     console.log(markers[i].title + ": " + toDisplay);
+     console.log(eTime + "<?" + convert12toRaw(markers[i].endTime));
+     //console.log(markers[i].endTime);
+     toDisplay &= (eTime < convert12toRaw(markers[i].endTime));// || (convert12toRaw(markers[i].startTime) - convert12toRaw(markers[i].endTime) >= 2200 && eTime > convert12toRaw(markers[i].endTime)));
+     //console.log(markers[i].title + ": " + toDisplay);
      if (toDisplay) {
        markers[i].setMap(map);
      } else {
@@ -214,7 +229,7 @@
    //add every event in the static data
    for (var eventID in eventManifest.Events) {
      var event = eventManifest.Events[eventID];
-     addMarker(event);
+     addMarker(event, eventID);
    };
 
    //add every event in the user date
@@ -222,7 +237,7 @@
    if (!storage) storage = JSON.parse("{\"Events\":{}}");
    for (var eventID in storage.Events) {
      var event = storage.Events[eventID];
-     addMarker(event);
+     addMarker(event, eventID);
    };
  }
 

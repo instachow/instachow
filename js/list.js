@@ -1,7 +1,16 @@
 var listOfEvents = eventManifest.Events;
 
+function eventPopupTrigger(x) {
+    console.log("AAA");
+    for (let i in markers) {
+        if (markers[i].id == x) {
+            google.maps.event.trigger(markers[i], 'click');
+        }
+    }
+}
+
 function buildEventList() {
-    function renderEvent(eventData) {
+    function renderEvent(eventData, eid) {
         let toDisplay = (filterList.length == 2);
         for (j in eventData.foodCategories) {
             if (filterList.indexOf(eventData.foodCategories[j]) > -1) {
@@ -12,6 +21,7 @@ function buildEventList() {
         var event = document.createElement('div');
         event.classList.add('event-container');
         event.classList.add('pad');
+        event.setAttribute('onclick', "google.maps.event.trigger(markers["+ eid +"], 'click')");
 
         var title = document.createElement('h3');
         title.classList.add('event-title-list');
@@ -64,14 +74,14 @@ function buildEventList() {
     table.innerHTML += "<i id='close-list-icon' class='material-icons float-right' onclick='closeListPopup()'>close</i>";
     if (table) {
         for (var i in listOfEvents) {
-            renderEvent(listOfEvents[i]);
+            renderEvent(listOfEvents[i], i);
         }
     }
     var storage = JSON.parse(localStorage.getItem("localManifest"));
     console.log(storage);
     if (storage) {
         for (var i in storage.Events) {
-            renderEvent(storage.Events[i]);
+            renderEvent(storage.Events[i], i + listOfEvents.length);
         }
     }
     document.body.appendChild(table);

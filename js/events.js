@@ -26,6 +26,11 @@ function openFilterPopup() {
       filterItem.innerHTML += food;
       filterPopup.append(filterItem);
     }
+    var filterTime = document.createElement("input");
+    filterTime.setAttribute('id', 'filter-time-end');
+    filterTime.setAttribute('onkeyup', 'filterMarkers()');
+    filterTime.setAttribute('type', 'time');
+    filterPopup.append(filterTime);
     document.body.append(filterPopup);
   }
 }
@@ -345,5 +350,5 @@ function convert24to12(input) {
 }
 
 function convert12toRaw(input) {
-  return moment(input, "h:mm A").format('HHMM')
+  return parseInt(moment(input, "h:mm A").format('HHMM'));
 }
