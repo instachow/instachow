@@ -215,7 +215,9 @@ input[type=time]::-webkit-outer-spin-button {
 }
 
 .new-mid-field {
-    width: auto;
+    width: 80px;
+    display:inline;
+    margin:5px 8px;
 }
 
 #new-create-event {

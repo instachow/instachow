@@ -12,7 +12,7 @@ function openFilterPopup() {
     filterPopup.setAttribute("class", "event-popup icon pad");
     filterPopup.innerHTML += "\
             <i class='material-icons float-right' onclick='closeFilterPopup()'>close</i>\
-            <h3> What kind of food do you want? </h3>";
+            <h3> Food type: </h3>";
     var filters = availableFilters.Filters;
 
     for (food in filters) {
@@ -53,6 +53,8 @@ function openNewPopup() {
     closeNewPopup();
   } else {
     newEventMode = 1;
+    var date = new Date();
+    var currentTime = date.toTimeString().substring(0,5);
     var newPopup = document.createElement("div");
     newPopup.setAttribute("id", "new-popup");
     newPopup.setAttribute("class", "event-popup icon pad");
@@ -61,11 +63,13 @@ function openNewPopup() {
     <h3> Create new event </h3>\
     <p> Event Name </p> \
     <input type='text' class='new-wide-field' id='new-event-name'\
-    placeholder='The Last Supper'>\
-    <span style='display:inline;'>\
-      <p> Start Time </p> \
-      <input type='time' class='new-mid-field' id='new-event-time-start'>\
-      <p> End Time </p> \
+    placeholder='The Last Supper'> \
+    <span style='min-width:50%; margin-top:10px;'>\
+      <p style='display:inline;'> Start Time </p> \
+      <input type='time' class='new-mid-field' id='new-event-time-start' value=" + currentTime + ">\
+    </span>\
+    <span>\
+      <p style='display:inline;'> End Time </p> \
       <input type='time' class='new-mid-field' id='new-event-time-end'>\
     </span>\
     <h id='warning'></h>\
@@ -108,11 +112,6 @@ function openNewPopup() {
     <h id='location-instructions'>Click on Map to set location</h>"
     document.body.append(newPopup);
   }
-}
-
-var currentTime =  function() {
-  var date = new Date();
-  return date.getHours() + ':' + date.getMinutes();
 }
 
 function openEventPopup(e) {
