@@ -35,7 +35,7 @@ function buildEventList() {
         var cat = eventData.foodCategories;
         categories.innerHTML = cat;
         event.appendChild(categories);
-        event.onclick = 'console.log("click")';
+        event.onclick = 'openEventPopup(this)';
 
         var description = document.createElement('p');
         description.classList.add('event-description');

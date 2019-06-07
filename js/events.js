@@ -14,7 +14,6 @@ function openFilterPopup() {
             <i class='material-icons float-right' onclick='closeFilterPopup()'>close</i>\
             <h3> What kind of food do you want? </h3>";
     var filters = availableFilters.Filters;
-    console.log(filters);
 
     for (food in filters) {
       var filterItem = document.createElement("span");
@@ -82,6 +81,16 @@ function openNewPopup() {
     <option value='Sausage'>Sausage</option>\
     <option value='Steak'>Steak</option>\
     <option value='Watermelon'>Watermelon</option>\
+    </select>\
+    <select name='filters[]' multiple='multiple' size='5' id='select-meal-type'>\
+    <option value=' Fish'>Fish</option>\
+    <option value=' Crustaceans'>Crustaceans</option>\
+    <option value=' Smoothies'>Smoothies</option>\
+    <option value=' Cupcakes'>Cupcakes</option>\
+    <option value=' Fast food'>Fast food</option>\
+    <option value=' Burgers'>Burgers</option>\
+    <option value=' Pizza'>Pizza</option>\
+    <option value=' Asian'>Asian</option>\
     </select>\
     <input type='text' class='new-wide-field' id='new-event-room'\
     placeholder='Room'>\
@@ -296,6 +305,8 @@ function newEventCreate() {
   var description = document.getElementById('new-event-description').value;
   var icon = document.getElementById('new-event-icon').value + ".png";
   var room = document.getElementById('new-event-room').value;
+  const selected = document.querySelectorAll('#select-meal-type option:checked');
+  const filters = Array.from(selected).map(el => el.value);
   storage.Events[id] = {
     "title": title,
     "lat": selectLat,
@@ -306,7 +317,7 @@ function newEventCreate() {
     "description": description,
     "room": room,
     "comments": [],
-    "foodCategories": [],
+    "foodCategories": filters,
   }
   localStorage.setItem("localManifest", JSON.stringify(storage));
   addMarker(storage.Events[id]);
