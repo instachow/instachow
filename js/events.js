@@ -126,7 +126,7 @@ function openNewPopup() {
       placeholder='Elder 326'>\
       <br><br>\
       <p id='location-instructions'>Click on Map to set location</> \
-      <i id='new-create-event' class='material-icons' onclick='newEventCreate()'>done</i>\
+      <i id='new-create-event' class='material-icons' ontouchstart='newEventCreate()' onclick='newEventCreate()'>done</i>\
       </form>\
     </div>"
     document.body.append(newPopup);
