@@ -4,13 +4,25 @@
     <title>Instachow</title>
     <link rel="stylesheet" type="text/css" href="css/layout.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Petit+Formal+Script|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Petit+Formal+Script|Source+Sans+Pro&display=swap"
+        rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable=no>
+
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicons/safari-pinned-tab.svg" color="#b45bd5">
+    <link rel="shortcut icon" href="assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#9f00a7">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
     <div class="header-container pad">
-        <span style="font-size: 22px;">Instachow</span>
+        <span style="font-size: 22px; font-weight: 900;">Instachow</span>
+        <i class="material-icons" id="my-location-icon" onclick="showMyLocation()">my_location</i>
     </div>
     <div class="main-container">
         <div id="map"></div>
@@ -19,11 +31,12 @@
         <span class="bottom-nav-item" onclick="openListPopup()"> <i class="material-icons">format_list_bulleted</i>
             <span>List</span>
         </span>
-        <span class="bottom-nav-item" id="new-event-button" onclick="openNewPopup()"> <i class="material-icons">add_location</i>
+        <span class="bottom-nav-item" id="new-event-button" onclick="openNewPopup()"> 
+            <i class="material-icons">add_location</i>
             <span>Add</span> <span class="hide-small">Event</span>
         </span>
         <span class="bottom-nav-item" onclick="openFilterPopup()"> <i class="material-icons">filter_list</i>
-            <span>Filter</span></span>
+            <span id='filter-label'>Filter</span></span>
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=
@@ -31,7 +44,9 @@
     <script type="text/javascript" src="data.json"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/events.js"></script>
-    <script src="js/list.js"></script>
+    <script type="text/javascript" src="js/list.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js"></script>
+
 </body>
 
 </html>
